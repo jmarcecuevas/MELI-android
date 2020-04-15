@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.marcelocuevas.mercadolibrechallenge.ui.utils.TouchInterceptorLayout
+            android:id="@+id/searchViewContainer"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginEnd="@dimen/largeDimen">
+
+            <androidx.appcompat.widget.SearchView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:id="@+id/searchView"
+                app:iconifiedByDefault="false"
+                app:queryHint="@string/serch_query_hint"
+                app:defaultQueryHint="@string/serch_query_hint"
+                app:queryBackground="@android:color/transparent"
+                android:background="@drawable/bg_white_rounded"/>
+
+        </com.marcelocuevas.mercadolibrechallenge.ui.utils.TouchInterceptorLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

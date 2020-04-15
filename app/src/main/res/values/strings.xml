@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MercadoLibreChallenge</string>
+    <string name="serch_query_hint">Buscar en Mercado Libre</string>
 </resources>
