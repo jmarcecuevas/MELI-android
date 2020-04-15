@@ -1,8 +1,12 @@
 package com.marcelocuevas.mercadolibrechallenge.ui.fragment
 
-import androidx.fragment.app.Fragment
+import com.marcelocuevas.mercadolibrechallenge.R
 
-class ProductDetailFragment: Fragment() {
+class ProductDetailFragment: GenericFragment() {
 
+    override fun layoutRes() = R.layout.fragment_product_detail
 
+    override fun init() {
+
+    }
 }

@@ -1,8 +1,14 @@
 package com.marcelocuevas.mercadolibrechallenge.ui.fragment
 
-import androidx.fragment.app.Fragment
+import com.marcelocuevas.mercadolibrechallenge.R
 
-class SearchFragment: Fragment() {
+class SearchFragment: GenericFragment() {
+
+    override fun layoutRes() = R.layout.fragment_search
+
+    override fun init() {
+
+    }
 
 
 }
