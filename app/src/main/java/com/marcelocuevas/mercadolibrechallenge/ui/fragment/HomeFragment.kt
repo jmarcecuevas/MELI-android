@@ -9,9 +9,13 @@ class HomeFragment: GenericFragment() {
 
     override fun init() {
         setupNav(toolbar)
+        setupSearchView()
+    }
 
+    private fun setupSearchView() {
+        searchView.isFocusable = false
         searchViewContainer.setOnClickListener {
-           navigateTo(R.id.search_fragment)
+            navigateTo(R.id.search_fragment)
         }
     }
 }

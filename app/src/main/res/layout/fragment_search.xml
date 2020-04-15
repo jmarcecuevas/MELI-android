@@ -8,8 +8,20 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
+        android:background="@android:color/white"
         app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:iconifiedByDefault="false"
+            app:queryHint="@string/serch_query_hint"
+            app:queryBackground="@android:color/transparent"
+            android:focusable="true"
+            app:searchIcon="@null">
+
+        </androidx.appcompat.widget.SearchView>
 
     </androidx.appcompat.widget.Toolbar>
 

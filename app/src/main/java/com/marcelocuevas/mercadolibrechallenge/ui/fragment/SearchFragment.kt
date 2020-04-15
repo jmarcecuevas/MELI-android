@@ -9,7 +9,11 @@ class SearchFragment: GenericFragment() {
 
     override fun init() {
         setupNav(toolbar)
+        setupSearchView()
+    }
 
-
+    private fun setupSearchView() {
+        searchView.onActionViewExpanded()
+        searchView.isIconified = false
     }
 }
