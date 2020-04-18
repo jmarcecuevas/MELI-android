@@ -11,7 +11,7 @@
         android:background="@color/colorPrimary"
         app:layout_constraintTop_toTopOf="parent">
 
-        <com.marcelocuevas.mercadolibrechallenge.ui.utils.TouchInterceptorLayout
+        <com.marcelocuevas.mercadolibrechallenge.presentation.utils.TouchInterceptorLayout
             android:id="@+id/searchViewContainer"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -27,7 +27,7 @@
                 app:queryBackground="@android:color/transparent"
                 android:background="@drawable/bg_white_rounded"/>
 
-        </com.marcelocuevas.mercadolibrechallenge.ui.utils.TouchInterceptorLayout>
+        </com.marcelocuevas.mercadolibrechallenge.presentation.utils.TouchInterceptorLayout>
 
     </androidx.appcompat.widget.Toolbar>
 

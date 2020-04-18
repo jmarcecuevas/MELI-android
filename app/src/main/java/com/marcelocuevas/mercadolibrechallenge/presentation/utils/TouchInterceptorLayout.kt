@@ -1,4 +1,4 @@
-package com.marcelocuevas.mercadolibrechallenge.ui.utils
+package com.marcelocuevas.mercadolibrechallenge.presentation.utils
 
 import android.content.Context
 import android.util.AttributeSet

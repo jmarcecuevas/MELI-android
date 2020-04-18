@@ -1,5 +1,6 @@
-package com.marcelocuevas.mercadolibrechallenge.ui.fragment
+package com.marcelocuevas.mercadolibrechallenge.presentation.fragment
 
+import androidx.navigation.fragment.findNavController
 import com.marcelocuevas.mercadolibrechallenge.R
 import kotlinx.android.synthetic.main.fragment_home.*
 
@@ -15,7 +16,8 @@ class HomeFragment: GenericFragment() {
     private fun setupSearchView() {
         searchView.isFocusable = false
         searchViewContainer.setOnClickListener {
-            navigateTo(R.id.search_fragment)
+            findNavController().navigate(R.id.search_fragment)
+            //navigateTo(R.id.search_fragment)
         }
     }
 }

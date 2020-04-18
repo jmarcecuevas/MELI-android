@@ -1,4 +1,4 @@
-package com.marcelocuevas.mercadolibrechallenge.ui.fragment
+package com.marcelocuevas.mercadolibrechallenge.presentation.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
