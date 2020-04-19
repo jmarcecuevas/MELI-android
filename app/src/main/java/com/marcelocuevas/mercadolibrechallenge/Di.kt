@@ -1,7 +1,7 @@
 package com.marcelocuevas.mercadolibrechallenge
 
 import com.marcelocuevas.data.datasource.SearchDataSource
-import com.marcelocuevas.data.repository.SearchRepository
+import repository.SearchRepository
 import com.marcelocuevas.data.repository.SearchRepositoryImpl
 import com.marcelocuevas.mercadolibrechallenge.framework.api.SearchAPI
 import com.marcelocuevas.mercadolibrechallenge.framework.network.ConnectivityInterceptor

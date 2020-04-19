@@ -1,4 +1,4 @@
-package com.marcelocuevas.mercadolibrechallenge.presentation.fragment
+package com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment
 
 import com.marcelocuevas.mercadolibrechallenge.R
 

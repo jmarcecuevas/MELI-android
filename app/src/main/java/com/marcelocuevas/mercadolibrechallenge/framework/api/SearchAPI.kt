@@ -1,7 +1,7 @@
 package com.marcelocuevas.mercadolibrechallenge.framework.api
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.marcelocuevas.domain.model.SearchProductDTO
+import com.marcelocuevas.data.model.SearchResponse
 import com.marcelocuevas.mercadolibrechallenge.framework.network.ConnectivityInterceptor
 import kotlinx.coroutines.Deferred
 import okhttp3.Interceptor
@@ -15,7 +15,7 @@ import retrofit2.http.Query
 interface SearchAPI {
 
     @GET("search")
-    fun searchAsync(@Query("q") q: String): Deferred<Response<SearchProductDTO>>
+    fun searchAsync(@Query("q") q: String): Deferred<Response<SearchResponse>>
 
     companion object {
         operator fun invoke(

@@ -1,4 +1,4 @@
-package com.marcelocuevas.mercadolibrechallenge.presentation.activity
+package com.marcelocuevas.mercadolibrechallenge.presentation.ui.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

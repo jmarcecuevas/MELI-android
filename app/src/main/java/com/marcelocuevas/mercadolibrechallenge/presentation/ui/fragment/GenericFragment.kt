@@ -1,4 +1,4 @@
-package com.marcelocuevas.mercadolibrechallenge.presentation.fragment
+package com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.Toolbar
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
@@ -32,6 +33,10 @@ abstract class GenericFragment: Fragment() {
 
     protected fun navigateTo(resId: Int) {
         findNavController().navigate(resId)
+    }
+
+    protected fun navigateTo(directions: NavDirections) {
+        findNavController().navigate(directions)
     }
 
     abstract fun layoutRes(): Int

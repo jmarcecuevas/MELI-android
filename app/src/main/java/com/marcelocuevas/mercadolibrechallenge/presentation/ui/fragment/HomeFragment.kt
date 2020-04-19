@@ -1,4 +1,4 @@
-package com.marcelocuevas.mercadolibrechallenge.presentation.fragment
+package com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment
 
 import androidx.navigation.fragment.findNavController
 import com.marcelocuevas.mercadolibrechallenge.R
@@ -17,7 +17,6 @@ class HomeFragment: GenericFragment() {
         searchView.isFocusable = false
         searchViewContainer.setOnClickListener {
             findNavController().navigate(R.id.search_fragment)
-            //navigateTo(R.id.search_fragment)
         }
     }
 }

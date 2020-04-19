@@ -1,16 +1,10 @@
-package com.marcelocuevas.mercadolibrechallenge.presentation.fragment
+package com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment
 
 import androidx.appcompat.widget.SearchView
 import com.marcelocuevas.mercadolibrechallenge.R
-import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
-//import org.koin.android.architecture.ext.viewModel
-import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment: GenericFragment() {
-
-    private val userViewModel by viewModel<SearchViewModel>()
-
 
     override fun layoutRes() = R.layout.fragment_search
 
@@ -18,22 +12,12 @@ class SearchFragment: GenericFragment() {
         setupNav(toolbar)
 
         setupSearchView()
-
-        userViewModel.search("Cocina")
-
-
-//        viewModel.search("Cocina")
-//        viewModel.productsLiveData.observe(this, Observer {
-//            Log.e("sd","asd")
-//        })
-
+        setupSearchViewListener()
     }
 
     private fun setupSearchView() {
         searchView.onActionViewExpanded()
         searchView.isIconified = false
-
-        setupSearchViewListener()
     }
 
     private fun setupSearchViewListener() {
@@ -44,9 +28,15 @@ class SearchFragment: GenericFragment() {
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
-                navigateTo(R.id.product_list_fragment)
+                navigateToSearchResults(query)
                 return true
             }
         })
+    }
+
+    private fun navigateToSearchResults(query: String) {
+        val directions: SearchFragmentDirections.ToSearchResultsFragment =
+            SearchFragmentDirections.toSearchResultsFragment(query)
+        navigateTo(directions)
     }
 }
