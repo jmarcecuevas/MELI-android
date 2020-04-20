@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:textSize="22sp"
+        tools:text="Descripción">
+    </TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/xLargeDimen"
+        android:fontFamily="@font/lato"
+        android:textSize="18sp"
+        tools:text="Este mixer es ideal para preparar gran variedad de recetas. Gracias a su tecnología innovadora, podrás crear mezclas y obtener excelentes resultados. Es práctico, compacto y no ocupa demasiado espacio en tu cocina. Comidas al instante Su batidor está especialmente diseñado para preparar las más deliciosas cremas y claras de nieve para decorar tus tortas favoritas. ¡Picar a mano es un trabajo del pasado! Con su procesadora incluida, podrás cortar vegetales en tan solo segundos y sin esfuerzo. Calidad asegurada A su vez, cuenta con cuchillas de acero, lo cual lo vuelve mucho más resistente, seguro, sencillo de limpiar y, sobre todo, perdurable en el tiempo.">
+    </TextView>
+
+</LinearLayout>

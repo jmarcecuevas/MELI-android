@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+        <TextView
+            android:id="@+id/reviewsTitleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/lato"
+            android:textSize="22sp"
+            tools:text="Opiniones sobre Kanji Home KJH-BL1000HB01">
+        </TextView>
+
+        <TextView
+            android:id="@+id/reviewsAverageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reviewsTitleTextView"
+            android:layout_marginTop="@dimen/xLargeDimen"
+            android:textSize="52sp"
+            android:fontFamily="@font/lato"
+            tools:text="4.5">
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/reviewsAverageContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/reviewsTitleTextView"
+            android:layout_alignTop="@+id/reviewsAverageTextView"
+            android:layout_alignBottom="@+id/reviewsAverageTextView"
+            android:gravity="center_vertical"
+            android:layout_marginStart="@dimen/largeDimen"
+            android:layout_marginEnd="@dimen/mediumDimen"
+            android:layout_toEndOf="@id/reviewsAverageTextView"
+            android:orientation="vertical">
+
+            <RatingBar
+                android:id="@+id/starsRatingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="?android:attr/ratingBarStyleIndicator"
+                android:theme="@style/RatingBar"
+                android:numStars="5"
+                android:stepSize="1"
+                tools:rating="4"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/lato"
+                android:textColor="@color/textLight"
+                tools:text="Promedio entre 176 opiniones">
+            </TextView>
+
+        </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/reviewsRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/reviewsAverageContainer"
+        android:layout_marginTop="17dp"
+        tools:itemCount="3"
+        tools:listitem="@layout/view_review_item">
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <Button
+        android:id="@+id/showAllReviewsButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/xLargeDimen"
+        android:layout_below="@+id/reviewsRecyclerView"
+        android:textAllCaps="false"
+        android:textColor="@color/colorAccent"
+        android:background="@color/white"
+        android:text="@string/product_detail_see_all_reviews">
+    </Button>
+
+</RelativeLayout>
+
+

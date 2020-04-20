@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/listPriceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:textColor="@color/textLight"
+        android:textSize="16sp"
+        tools:text="$ 28.728">
+    </TextView>
+
+    <TextView
+        android:id="@+id/priceTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:textSize="28sp"
+        tools:text="$ 32.799">
+    </TextView>
+
+    <TextView
+        android:id="@+id/shippingGuaranteedTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/largeDimen"
+        android:padding="@dimen/smallDimen"
+        android:fontFamily="@font/lato"
+        android:textSize="12sp"
+        android:ellipsize="end"
+        android:background="@drawable/rounded_background_accent"
+        android:textColor="@android:color/white"
+        tools:text="Envío con normalidad">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/largeDimen"
+        android:drawableStart="@drawable/ic_shipping"
+        android:drawablePadding="@dimen/mediumDimen"
+        android:fontFamily="@font/lato"
+        android:textSize="16sp"
+        android:textColor="@color/colorGreen"
+        android:text="@string/product_detail_free_shipping_title">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mediumDimen"
+        android:drawableStart="@drawable/ic_flash_on"
+        android:drawablePadding="@dimen/mediumDimen"
+        android:fontFamily="@font/lato_bold_italic"
+        android:textSize="16sp"
+        android:textColor="@color/colorGreen"
+        android:text="@string/full">
+    </TextView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mediumDimen"
+        android:drawableStart="@drawable/ic_store"
+        android:drawablePadding="@dimen/mediumDimen"
+        android:fontFamily="@font/lato"
+        android:textSize="16sp"
+        android:textColor="@color/colorGreen"
+        android:text="@string/product_detail_store_pickup">
+    </TextView>
+
+    <Button
+        android:id="@+id/buyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/xLargeDimen"
+        android:fontFamily="@font/lato"
+        android:textSize="18sp"
+        android:textColor="@color/white"
+        android:textAllCaps="false"
+        android:background="@drawable/rounded_background_accent"
+        tools:text="Comprar ahora">
+    </Button>
+
+    <Button
+        android:id="@+id/addToCartButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/mediumDimen"
+        android:fontFamily="@font/lato"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        android:background="@drawable/rounded_background_transparent"
+        tools:text="Agregar al carrito">
+    </Button>
+
+
+</LinearLayout>

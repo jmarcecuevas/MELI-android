@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">MercadoLibreChallenge</string>
     <string name="serch_query_hint">Buscar en Mercado Libre</string>
+    <string name="product_detail_see_all_reviews">Ver todas las opiniones</string>
+    <string name="product_detail_main_features_title">Características principales</string>
+    <string name="product_detail_free_shipping_title">Llega gratis a tu domicilio</string>
+    <string name="full">FULL</string>
+    <string name="product_detail_store_pickup">Retiralo gratis en el store del vendedor</string>
 </resources>
