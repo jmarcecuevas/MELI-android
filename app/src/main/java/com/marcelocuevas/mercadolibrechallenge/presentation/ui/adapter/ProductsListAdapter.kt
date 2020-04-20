@@ -10,7 +10,7 @@ import com.marcelocuevas.mercadolibrechallenge.presentation.utils.inflate
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.visibleOrGone
 import kotlinx.android.synthetic.main.view_product_item.view.*
 
-class ProductsListAdapter: RecyclerView.Adapter<ProductsListAdapter.ViewHolder>() {
+class ProductsListAdapter(val onClick: (String) -> Unit): RecyclerView.Adapter<ProductsListAdapter.ViewHolder>() {
 
     private var items: List<Product> = emptyList()
 
@@ -22,8 +22,13 @@ class ProductsListAdapter: RecyclerView.Adapter<ProductsListAdapter.ViewHolder>(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(parent.inflate(R.layout.view_product_item))
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(items[position])
+
+        holder.itemView.setOnClickListener {
+            onClick(items[position].id)
+        }
+    }
 
     override fun getItemCount() = items.size
 

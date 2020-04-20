@@ -27,15 +27,19 @@
         android:id="@+id/search_results_fragment"
         android:name="com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment.SearchResultsFragment"
         android:label="Resultados de búsqueda">
-        <action
-            android:id="@+id/action_productListFragment_to_productDetailFragment"
-            app:destination="@id/product_detail_fragment" />
         <argument
             android:name="queryText"
             app:argType="string" />
+        <action
+            android:id="@+id/to_product_detail_fragment"
+            app:destination="@id/product_detail_fragment" />
     </fragment>
     <fragment
         android:id="@+id/product_detail_fragment"
         android:name="com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment.ProductDetailFragment"
-        android:label="ProductDetailFragment" />
+        android:label="ProductDetailFragment" >
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
 </navigation>

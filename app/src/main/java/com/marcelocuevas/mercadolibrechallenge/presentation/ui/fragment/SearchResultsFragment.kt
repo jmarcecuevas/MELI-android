@@ -12,7 +12,9 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SearchResultsFragment: GenericFragment() {
 
     private val viewModel by viewModel<SearchViewModel>()
-    private val adapter = ProductsListAdapter()
+    private val adapter = ProductsListAdapter() {
+        navigateToDetail(it)
+    }
 
     private val queryText: String
         get() = SearchResultsFragmentArgs.
@@ -22,16 +24,16 @@ class SearchResultsFragment: GenericFragment() {
 
     override fun init() {
         setupNav(toolbar)
-
-        resultsRecyclerView.layoutManager = LinearLayoutManager(context)
-        resultsRecyclerView.adapter = adapter
+        setupRecyclerView()
 
         viewModel.search(queryText)
 
         startObserving()
-        viewModel.productsLiveData.observe(this, Observer {
+    }
 
-        })
+    private fun setupRecyclerView() {
+        resultsRecyclerView.layoutManager = LinearLayoutManager(context)
+        resultsRecyclerView.adapter = adapter
     }
 
     private fun startObserving() {
@@ -46,5 +48,11 @@ class SearchResultsFragment: GenericFragment() {
         viewModel.isLoadingLiveData.observe(this, Observer {
             progressBar.shouldShow(it)
         })
+    }
+
+    private fun navigateToDetail(id: String) {
+        val directions: SearchResultsFragmentDirections.ToProductDetailFragment =
+            SearchResultsFragmentDirections.toProductDetailFragment(id)
+        navigateTo(directions)
     }
 }

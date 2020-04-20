@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.Product
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.mapToPresentation
+import com.marcelocuevas.usecases.GetItemDetail
 import model.Result
 import com.marcelocuevas.usecases.SearchProducts
 import kotlinx.coroutines.launch
@@ -29,7 +30,6 @@ class SearchViewModel(
 
     fun search(query: String) {
         isLoading.value = true
-
         viewModelScope.launch {
             when (val value = searchProducts(query)) {
                 is Result.Success -> {

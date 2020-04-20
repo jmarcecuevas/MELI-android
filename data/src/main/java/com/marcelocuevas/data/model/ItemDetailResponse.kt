@@ -2,7 +2,7 @@ package com.marcelocuevas.data.model
 
 import com.google.gson.annotations.SerializedName
 
-data class ProductDetailResponse(
+data class ItemDetailResponse(
     val id: String,
     @SerializedName("site_id")
     val siteID: String,

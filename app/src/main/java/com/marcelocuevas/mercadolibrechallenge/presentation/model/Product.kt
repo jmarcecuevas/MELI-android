@@ -2,9 +2,10 @@ package com.marcelocuevas.mercadolibrechallenge.presentation.model
 
 import java.text.NumberFormat
 import java.util.*
-import model.Product as DomainProduct
+import model.Item as DomainProduct
 
 data class Product(
+    val id: String,
     val title: String,
     val imageURL: String,
     private val price: Double,
@@ -38,6 +39,7 @@ data class Product(
 }
 
 fun DomainProduct.mapToPresentation(): Product = Product(
+    id,
     title,
     imageURL,
     price,

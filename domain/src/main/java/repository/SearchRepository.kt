@@ -1,9 +1,9 @@
 package repository
 
-import model.Product
+import model.Item
 import model.Result
 
 interface SearchRepository {
 
-    suspend fun search(query: String): Result<List<Product>>
+    suspend fun search(query: String): Result<List<Item>>
 }
