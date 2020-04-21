@@ -37,7 +37,7 @@
     <fragment
         android:id="@+id/product_detail_fragment"
         android:name="com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment.ProductDetailFragment"
-        android:label="ProductDetailFragment" >
+        android:label="Producto">
         <argument
             android:name="id"
             app:argType="string" />

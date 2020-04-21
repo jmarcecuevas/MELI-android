@@ -19,7 +19,9 @@ import com.marcelocuevas.mercadolibrechallenge.framework.datasource.NetworkItemD
 import com.marcelocuevas.mercadolibrechallenge.framework.network.ConnectivityInterceptor
 import com.marcelocuevas.mercadolibrechallenge.framework.network.ConnectivityInterceptorImpl
 import com.marcelocuevas.mercadolibrechallenge.framework.datasource.NetworkSearchDataSource
+import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.SearchViewModel
+import com.marcelocuevas.usecases.GetItemDetail
 import com.marcelocuevas.usecases.SearchProducts
 import model.Item
 import model.detail.Description
@@ -30,7 +32,7 @@ import repository.ItemRepository
 
 val dataModule = module {
     single<SearchRepository> { SearchRepositoryImpl(get(), makeItemDataMapper()) }
-    single<ItemRepository>  {   ItemRepositoryImpl(get(),
+    single<ItemRepository> {   ItemRepositoryImpl(get(),
                                 makeItemDetailDataMapper(),
                                 makeDescriptionDataMapper(),
                                 makeReviewDataMapper()) }
@@ -38,6 +40,7 @@ val dataModule = module {
 
 val useCaseModule = module {
     factory { SearchProducts(get()) }
+    factory { GetItemDetail(get()) }
 }
 
 val appModule = module {
@@ -47,6 +50,7 @@ val appModule = module {
     single<SearchDataSource> { NetworkSearchDataSource(get()) }
     single<ItemDataSource> { NetworkItemDataSource(get())  }
     factory { SearchViewModel(get()) }
+    factory { ItemViewModel(get()) }
 }
 
 private fun makeItemDataMapper(): (ItemResponse) -> Item = { itemDto ->

@@ -20,7 +20,7 @@ interface ItemAPI {
     fun itemAsync(@Path("id") id: String): Deferred<Response<ItemDetailResponse>>
 
     @GET("items/{id}/descriptions")
-    fun descriptionsAsync(@Path("id") id: String): Deferred<Response<DescriptionsResponse>>
+    fun descriptionsAsync(@Path("id") id: String): Deferred<Response<List<DescriptionsResponse>>>
 
     @GET("reviews/item/{id}")
     fun reviewsAsync(@Path("id") id: String): Deferred<Response<ReviewsResponse>>

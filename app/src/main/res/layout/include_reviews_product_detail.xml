@@ -35,7 +35,9 @@
             android:layout_marginStart="@dimen/largeDimen"
             android:layout_marginEnd="@dimen/mediumDimen"
             android:layout_toEndOf="@id/reviewsAverageTextView"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:visibility="invisible"
+            tools:visibility="visible">
 
             <RatingBar
                 android:id="@+id/starsRatingBar"

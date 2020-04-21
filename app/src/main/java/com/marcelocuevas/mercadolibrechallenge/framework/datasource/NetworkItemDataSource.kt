@@ -28,7 +28,8 @@ class NetworkItemDataSource(private val itemAPI: ItemAPI):
         try {
             val response = itemAPI.descriptionsAsync(itemID).await()
             if (response.isSuccessful) {
-                response.body()?.let { return Result.Success(it) }
+                response.body()?.let {
+                    if (it.isNotEmpty()) return Result.Success(it[0]) }
             }
             return Result.Error(IOException("Ha ocurrido un error"))
         } catch (e: NoConnectivityException) {

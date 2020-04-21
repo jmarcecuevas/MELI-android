@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <TextView
         android:id="@+id/listPriceTextView"
@@ -12,6 +9,8 @@
         android:fontFamily="@font/lato"
         android:textColor="@color/textLight"
         android:textSize="16sp"
+        android:visibility="gone"
+        tools:visibility="visible"
         tools:text="$ 28.728">
     </TextView>
 
@@ -35,6 +34,8 @@
         android:ellipsize="end"
         android:background="@drawable/rounded_background_accent"
         android:textColor="@android:color/white"
+        android:visibility="gone"
+        tools:visibility="visible"
         tools:text="Envío con normalidad">
     </TextView>
 
@@ -47,7 +48,9 @@
         android:fontFamily="@font/lato"
         android:textSize="16sp"
         android:textColor="@color/colorGreen"
-        android:text="@string/product_detail_free_shipping_title">
+        android:text="@string/product_detail_free_shipping_title"
+        android:visibility="invisible"
+        tools:visibility="visible">
     </TextView>
 
     <TextView
@@ -59,7 +62,9 @@
         android:fontFamily="@font/lato_bold_italic"
         android:textSize="16sp"
         android:textColor="@color/colorGreen"
-        android:text="@string/full">
+        android:text="@string/full"
+        android:visibility="gone"
+        tools:visibility="visible">
     </TextView>
 
     <TextView
@@ -84,6 +89,8 @@
         android:textColor="@color/white"
         android:textAllCaps="false"
         android:background="@drawable/rounded_background_accent"
+        android:visibility="invisible"
+        tools:visibility="visible"
         tools:text="Comprar ahora">
     </Button>
 
@@ -97,8 +104,9 @@
         android:textSize="18sp"
         android:textAllCaps="false"
         android:background="@drawable/rounded_background_transparent"
+        android:visibility="invisible"
+        tools:visibility="visible"
         tools:text="Agregar al carrito">
     </Button>
 
-
-</LinearLayout>
+</merge>

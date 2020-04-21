@@ -29,24 +29,25 @@
                 android:id="@+id/headerContainer"
                 layout="@layout/include_header_product_detail"/>
 
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/picturesViewPager"
+            <com.opensooq.pluto.PlutoView
+                android:id="@+id/picturesSlider"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                app:auto_cycle="false"
                 android:layout_marginTop="@dimen/largeDimen"
                 app:layout_constraintTop_toBottomOf="@+id/headerContainer"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintDimensionRatio="1:1"
                 tools:background="@color/colorAccent">
-            </androidx.viewpager.widget.ViewPager>
+            </com.opensooq.pluto.PlutoView>
 
             <LinearLayout
                 android:id="@+id/belowGalleryContainer"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/mediumDimen"
-                app:layout_constraintTop_toBottomOf="@+id/picturesViewPager"
+                app:layout_constraintTop_toBottomOf="@+id/picturesSlider"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:orientation="vertical">
@@ -60,7 +61,9 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/lato"
                     android:textSize="22sp"
-                    android:text="@string/product_detail_main_features_title">
+                    android:text="@string/product_detail_main_features_title"
+                    android:visibility="invisible"
+                    tools:visibility="visible">
                 </TextView>
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -84,5 +87,15 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
+
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+    </androidx.core.widget.ContentLoadingProgressBar>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
