@@ -54,54 +54,41 @@
                     tools:ignore="UnknownIdInLayout">
                 </com.opensooq.pluto.PlutoView>
 
-                <LinearLayout
-                    android:id="@+id/belowGalleryContainer"
-                    android:layout_width="0dp"
+                <include
+                    layout="@layout/include_price_and_shipping_product_detail"
+                    bind:viewModel="@{viewModel}">
+                </include>
+
+                <TextView
+                    android:id="@+id/text"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/mediumDimen"
-                    app:layout_constraintTop_toBottomOf="@+id/picturesSlider"
+                    app:layout_constraintTop_toBottomOf="@+id/addToCartButton"
                     app:layout_constraintStart_toStartOf="parent"
+                    android:fontFamily="@font/lato"
+                    android:textSize="22sp"
+                    android:text="@string/product_detail_features_title"
+                    android:visibility="visible">
+                </TextView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/attributesRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/text"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:orientation="vertical">
+                    app:layout_constraintStart_toStartOf="parent"
+                    tools:itemCount="6"
+                    tools:listitem="@layout/view_attribute_item" />
 
-                    <include
-                        layout="@layout/include_price_and_shipping_product_detail"
-                        bind:viewModel="@{viewModel}">
-                    </include>
+                <include
+                    layout="@layout/include_description_product_detail"
+                    bind:viewModel="@{viewModel}">
+                </include>
 
-                    <include
-                        layout="@layout/include_separator_product_detail">
-                    </include>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/lato"
-                        android:textSize="22sp"
-                        android:visibility="visible"
-                        tools:visibility="visible">
-                    </TextView>
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/attributesRecyclerView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/xLargeDimen"
-                        tools:itemCount="6"
-                        tools:listitem="@layout/view_attribute_item" />
-
-                    <include layout="@layout/include_separator_product_detail" />
-
-                    <include
-                        layout="@layout/include_description_product_detail"
-                        bind:viewModel="@{viewModel}">
-                    </include>
-
-                    <include layout="@layout/include_separator_product_detail" />
-
-                    <include layout="@layout/include_reviews_product_detail" />
-
-                </LinearLayout>
+                <include
+                    layout="@layout/include_reviews_product_detail">
+                </include>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

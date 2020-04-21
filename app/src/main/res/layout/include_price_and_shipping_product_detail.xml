@@ -16,6 +16,8 @@
             android:id="@+id/listPriceTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/picturesSlider"
+            app:layout_constraintStart_toStartOf="parent"
             android:fontFamily="@font/lato"
             android:textColor="@color/textLight"
             android:textSize="16sp"
@@ -29,6 +31,8 @@
             android:id="@+id/priceTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/listPriceTextView"
+            app:layout_constraintStart_toStartOf="parent"
             android:fontFamily="@font/lato"
             android:textSize="28sp"
             android:text="@{viewModel.itemLiveData.priceLabel()}"
@@ -40,6 +44,8 @@
             android:id="@+id/shippingGuaranteedTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/priceTextView"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/largeDimen"
             android:padding="@dimen/smallDimen"
             android:fontFamily="@font/lato"
@@ -54,8 +60,11 @@
         </TextView>
 
         <TextView
+            android:id="@+id/freeShippingTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/shippingGuaranteedTextView"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/largeDimen"
             android:drawableStart="@drawable/ic_shipping"
             android:drawablePadding="@dimen/mediumDimen"
@@ -68,8 +77,11 @@
         </TextView>
 
         <TextView
+            android:id="@+id/fulfillmentTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/freeShippingTextView"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/mediumDimen"
             android:drawableStart="@drawable/ic_flash_on"
             android:drawablePadding="@dimen/mediumDimen"
@@ -82,8 +94,11 @@
         </TextView>
 
         <TextView
+            android:id="@+id/storePickupTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/fulfillmentTextView"
+            app:layout_constraintStart_toStartOf="parent"
             android:layout_marginTop="@dimen/mediumDimen"
             android:drawableStart="@drawable/ic_store"
             android:drawablePadding="@dimen/mediumDimen"
@@ -98,6 +113,9 @@
             android:id="@+id/buyButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/storePickupTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="parent"
             android:layout_marginTop="@dimen/xLargeDimen"
             android:fontFamily="@font/lato"
             android:textSize="18sp"
@@ -114,6 +132,9 @@
             android:id="@+id/addToCartButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/buyButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="@dimen/mediumDimen"
             android:fontFamily="@font/lato"
             android:textColor="@color/colorAccent"

@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout"
     xmlns:tools="http://schemas.android.com/tools">
 
         <TextView
             android:id="@+id/reviewsTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:fontFamily="@font/lato"
             android:textSize="22sp"
             tools:text="Opiniones sobre Kanji Home KJH-BL1000HB01">
@@ -17,7 +20,7 @@
             android:id="@+id/reviewsAverageTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/reviewsTitleTextView"
+            app:layout_constraintTop_toBottomOf="@+id/reviewsTitleTextView"
             android:layout_marginTop="@dimen/xLargeDimen"
             android:textSize="52sp"
             android:fontFamily="@font/lato"
@@ -26,15 +29,14 @@
 
         <LinearLayout
             android:id="@+id/reviewsAverageContainer"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/reviewsTitleTextView"
-            android:layout_alignTop="@+id/reviewsAverageTextView"
-            android:layout_alignBottom="@+id/reviewsAverageTextView"
+            app:layout_constraintTop_toTopOf="@+id/reviewsAverageTextView"
+            app:layout_constraintBottom_toBottomOf="@+id/reviewsAverageTextView"
+            app:layout_constraintStart_toEndOf="@+id/reviewsAverageTextView"
             android:gravity="center_vertical"
             android:layout_marginStart="@dimen/largeDimen"
             android:layout_marginEnd="@dimen/mediumDimen"
-            android:layout_toEndOf="@id/reviewsAverageTextView"
             android:orientation="vertical"
             android:visibility="invisible"
             tools:visibility="visible">
@@ -63,7 +65,7 @@
         android:id="@+id/reviewsRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/reviewsAverageContainer"
+        app:layout_constraintTop_toBottomOf="@+id/reviewsAverageContainer"
         android:layout_marginTop="17dp"
         tools:itemCount="3"
         tools:listitem="@layout/view_review_item">
@@ -73,14 +75,14 @@
         android:id="@+id/showAllReviewsButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/reviewsRecyclerView"
         android:layout_marginTop="@dimen/xLargeDimen"
-        android:layout_below="@+id/reviewsRecyclerView"
         android:textAllCaps="false"
         android:textColor="@color/colorAccent"
         android:background="@color/white"
         android:text="@string/product_detail_see_all_reviews">
     </Button>
 
-</RelativeLayout>
+</merge>
 
 
