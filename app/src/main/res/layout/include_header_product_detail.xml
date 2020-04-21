@@ -10,14 +10,14 @@
         </variable>
     </data>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <merge
+        tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
         <TextView
             android:id="@+id/conditionTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
             android:layout_marginBottom="@dimen/smallDimen"
             android:fontFamily="@font/lato"
             android:textColor="@color/textLight"
@@ -30,19 +30,18 @@
             android:id="@+id/titleTextView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/conditionTextView"
+            app:layout_constraintTop_toBottomOf="@+id/conditionTextView"
             android:textSize="18sp"
             android:fontFamily="@font/lato"
             android:text="@{viewModel.itemLiveData.title}"
             tools:text="Faja Reductora Hombre Neoprene Deportiva Lumbar Modeladora Termica Cintura Abdomen Gym Gimnasio Deporte Calza Remera">
-
         </TextView>
 
         <RatingBar
             android:id="@+id/starsRatingBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/titleTextView"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView"
             style="?android:attr/ratingBarStyleSmall"
             android:numStars="5"
             android:stepSize="0.1"
@@ -57,8 +56,8 @@
             android:id="@+id/amountReviewsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/titleTextView"
-            android:layout_toEndOf="@+id/starsRatingBar"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView"
+            app:layout_constraintStart_toEndOf="@id/starsRatingBar"
             android:layout_marginStart="@dimen/smallDimen"
             android:layout_marginTop="@dimen/smallDimen"
             android:fontFamily="@font/lato"
@@ -67,8 +66,8 @@
             app:hideIfFalse="@{viewModel.itemLiveData.hasReviews()}"
             tools:visibility="visible"
             tools:text="(85)">
-
         </TextView>
 
-    </RelativeLayout>
+    </merge>
+
 </layout>

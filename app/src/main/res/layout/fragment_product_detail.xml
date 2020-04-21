@@ -36,9 +36,9 @@
                 android:padding="@dimen/largeDimen">
 
                 <include
-                    android:id="@+id/headerContainer"
                     bind:viewModel="@{viewModel}"
-                    layout="@layout/include_header_product_detail" />
+                    layout="@layout/include_header_product_detail">
+                </include>
 
                 <com.opensooq.pluto.PlutoView
                     android:id="@+id/picturesSlider"
@@ -46,11 +46,12 @@
                     android:layout_height="0dp"
                     app:auto_cycle="false"
                     android:layout_marginTop="@dimen/largeDimen"
-                    app:layout_constraintTop_toBottomOf="@+id/headerContainer"
+                    app:layout_constraintTop_toBottomOf="@+id/starsRatingBar"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintDimensionRatio="1:1"
-                    tools:background="@color/colorAccent">
+                    tools:background="@color/colorAccent"
+                    tools:ignore="UnknownIdInLayout">
                 </com.opensooq.pluto.PlutoView>
 
                 <LinearLayout
@@ -68,7 +69,9 @@
                         bind:viewModel="@{viewModel}">
                     </include>
 
-                    <include layout="@layout/include_separator_product_detail" />
+                    <include
+                        layout="@layout/include_separator_product_detail">
+                    </include>
 
                     <TextView
                         android:layout_width="match_parent"

@@ -10,7 +10,7 @@
         </variable>
     </data>
 
-    <merge>
+    <merge tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
         <TextView
             android:id="@+id/listPriceTextView"

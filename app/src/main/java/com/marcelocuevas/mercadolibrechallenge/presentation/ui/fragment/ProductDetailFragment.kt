@@ -14,7 +14,6 @@ import com.opensooq.pluto.listeners.OnSlideChangeListener
 import kotlinx.android.synthetic.main.fragment_product_detail.*
 import kotlinx.android.synthetic.main.fragment_product_detail.progressBar
 import kotlinx.android.synthetic.main.fragment_product_detail.toolbar
-import kotlinx.android.synthetic.main.fragment_search_results.*
 import model.detail.ItemDetail
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
