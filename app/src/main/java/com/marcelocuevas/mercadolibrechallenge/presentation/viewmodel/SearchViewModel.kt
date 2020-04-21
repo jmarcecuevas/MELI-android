@@ -5,14 +5,16 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.Product
-import com.marcelocuevas.mercadolibrechallenge.presentation.model.mapToPresentation
-import com.marcelocuevas.usecases.GetItemDetail
 import model.Result
 import com.marcelocuevas.usecases.SearchProducts
 import kotlinx.coroutines.launch
+import model.Item
+import model.dictionary.Dictionary
 
 class SearchViewModel(
-    private val searchProducts: SearchProducts
+    private val searchProducts: SearchProducts,
+    private val dictionary: Dictionary,
+    private val mapItemDomain: (Item,Dictionary) -> (Product)
 ): ViewModel() {
 
     private val errorMessage = MutableLiveData<String>()
@@ -34,7 +36,7 @@ class SearchViewModel(
             when (val value = searchProducts(query)) {
                 is Result.Success -> {
                     isLoading.postValue(false)
-                    products.postValue(value.data.map { it.mapToPresentation() })
+                    products.postValue(value.data.map { mapItemDomain(it,dictionary) })
                 }
 
                 is Result.Error -> {

@@ -2,6 +2,7 @@ package com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment
 
 import androidx.lifecycle.Observer
 import com.marcelocuevas.mercadolibrechallenge.R
+import com.marcelocuevas.mercadolibrechallenge.databinding.FragmentProductDetailBinding
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.SliderAdapter
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.shouldShow
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewModel
@@ -13,21 +14,25 @@ import model.detail.ItemDetail
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ProductDetailFragment: GenericFragment() {
+class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>() {
 
     private val viewModel by viewModel<ItemViewModel>()
 
     private val id: String
         get() = ProductDetailFragmentArgs.fromBundle(requireArguments()).id
 
-    override fun layoutRes() = R.layout.fragment_product_detail
+    override fun layoutRes(): Int = R.layout.fragment_product_detail
 
     override fun init() {
         setupNav(toolbar)
-
+        setupBinding()
         viewModel.itemDetail(id)
-
         startObserving()
+    }
+
+    private fun setupBinding() {
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
     }
 
     private fun startObserving() {
@@ -44,6 +49,7 @@ class ProductDetailFragment: GenericFragment() {
         })
     }
 
+
     private fun showPictures(pictures: List<ItemDetail.Item.Picture>) {
         val list: MutableList<String> = arrayListOf()
         pictures.map { list.add(it.url) }
@@ -54,15 +60,11 @@ class ProductDetailFragment: GenericFragment() {
             }
         })
 
-        picturesSlider.create(adapter, lifecycle = lifecycle)
-
         picturesSlider.setOnSlideChangeListener(object : OnSlideChangeListener {
             override fun onSlideChange(adapter: PlutoAdapter<*, *>, position: Int) {
 
-
             }
         })
-
         picturesSlider.create(adapter, lifecycle = lifecycle)
     }
 }

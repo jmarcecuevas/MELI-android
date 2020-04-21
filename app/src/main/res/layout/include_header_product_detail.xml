@@ -1,58 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        android:id="@+id/conditionTextView"
+    <data>
+        <variable
+            name="viewModel"
+            type="com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewModel">
+        </variable>
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/lato"
-        android:textColor="@color/textLight"
-        tools:visibility="visible"
-        tools:text="Nuevo  |  15 vendidos">
+        android:layout_height="match_parent">
 
-    </TextView>
+        <TextView
+            android:id="@+id/conditionTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/smallDimen"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/textLight"
+            tools:visibility="visible"
+            android:text="@{viewModel.itemLiveData.item.condition}"
+            tools:text="Nuevo  |  15 vendidos">
 
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/conditionTextView"
-        android:textSize="18sp"
-        android:fontFamily="@font/lato"
-        tools:text="Faja Reductora Hombre Neoprene Deportiva Lumbar Modeladora Termica Cintura Abdomen Gym Gimnasio Deporte Calza Remera">
+        </TextView>
 
-    </TextView>
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/conditionTextView"
+            android:textSize="18sp"
+            android:fontFamily="@font/lato"
+            android:text="@{viewModel.itemLiveData.item.title}"
+            tools:text="Faja Reductora Hombre Neoprene Deportiva Lumbar Modeladora Termica Cintura Abdomen Gym Gimnasio Deporte Calza Remera">
 
-    <RatingBar
-        android:id="@+id/starsRatingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/titleTextView"
-        style="?android:attr/ratingBarStyleSmall"
-        android:numStars="5"
-        android:stepSize="0.1"
-        android:layout_marginTop="@dimen/smallDimen"
-        android:clickable="false"
-        android:visibility="gone"
-        tools:visibility="visible"
-        tools:rating="4.5" />
+        </TextView>
 
-    <TextView
-        android:id="@+id/amountReviewsTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/titleTextView"
-        android:layout_toEndOf="@+id/starsRatingBar"
-        android:layout_marginStart="@dimen/mediumDimen"
-        android:fontFamily="@font/lato"
-        android:textColor="@color/textLight"
-        android:visibility="gone"
-        tools:visibility="visible"
-        tools:text="(85)">
+        <RatingBar
+            android:id="@+id/starsRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleTextView"
+            style="?android:attr/ratingBarStyleSmall"
+            android:numStars="5"
+            android:stepSize="0.1"
+            android:layout_marginTop="@dimen/smallDimen"
+            android:clickable="false"
+            android:rating="@{viewModel.itemLiveData.review.ratingAverage}"
+            app:hideIfZero="@{viewModel.itemLiveData.review.ratingAverage}"
+            tools:visibility="visible"
+            tools:rating="4.5" />
 
-    </TextView>
+        <TextView
+            android:id="@+id/amountReviewsTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/titleTextView"
+            android:layout_toEndOf="@+id/starsRatingBar"
+            android:layout_marginStart="@dimen/smallDimen"
+            android:layout_marginTop="@dimen/smallDimen"
+            android:fontFamily="@font/lato"
+            android:textColor="@color/textLight"
+            android:text="@{`(` + viewModel.itemLiveData.review.reviews.size() + `)`}"
+            app:hideIfZero="@{viewModel.itemLiveData.review.reviews.size()}"
+            android:visibility="gone"
+            tools:visibility="visible"
+            tools:text="(85)">
 
-</RelativeLayout>
+        </TextView>
+
+    </RelativeLayout>
+</layout>

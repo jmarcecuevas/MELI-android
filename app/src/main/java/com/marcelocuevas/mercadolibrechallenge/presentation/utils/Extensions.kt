@@ -8,10 +8,11 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
-import android.widget.ProgressBar
 import androidx.annotation.LayoutRes
 import androidx.core.widget.ContentLoadingProgressBar
 import com.bumptech.glide.Glide
+import java.text.NumberFormat
+import java.util.*
 
 fun View.hideKeyboard() {
     val imm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
@@ -29,8 +30,11 @@ fun ViewGroup.inflate(@LayoutRes layoutRes: Int): View =
     LayoutInflater.from(context).inflate(layoutRes, this, false)
 
 fun ContentLoadingProgressBar.shouldShow(value: Boolean) {
-    if (value)
-        show()
-    else
-        hide()
+    if (value) show() else hide()
+}
+
+fun Double.toPrettifiedPrice(): String {
+    val nf = NumberFormat.getNumberInstance(Locale.GERMAN)
+    nf.isGroupingUsed = true
+    return "$ ${nf.format(this)}"
 }

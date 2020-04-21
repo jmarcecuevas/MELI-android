@@ -19,6 +19,9 @@ import com.marcelocuevas.mercadolibrechallenge.framework.datasource.NetworkItemD
 import com.marcelocuevas.mercadolibrechallenge.framework.network.ConnectivityInterceptor
 import com.marcelocuevas.mercadolibrechallenge.framework.network.ConnectivityInterceptorImpl
 import com.marcelocuevas.mercadolibrechallenge.framework.datasource.NetworkSearchDataSource
+import com.marcelocuevas.mercadolibrechallenge.presentation.mapper.mapItemDomain
+import com.marcelocuevas.mercadolibrechallenge.framework.AndroidDictionary
+import com.marcelocuevas.mercadolibrechallenge.presentation.model.Product
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.SearchViewModel
 import com.marcelocuevas.usecases.GetItemDetail
@@ -27,6 +30,8 @@ import model.Item
 import model.detail.Description
 import model.detail.ItemDetail
 import model.detail.Review
+import model.dictionary.Dictionary
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import repository.ItemRepository
 
@@ -47,10 +52,22 @@ val appModule = module {
     single<ConnectivityInterceptor> { ConnectivityInterceptorImpl(get())}
     single { SearchAPI.invoke(get()) }
     single { ItemAPI.invoke(get()) }
+
     single<SearchDataSource> { NetworkSearchDataSource(get()) }
     single<ItemDataSource> { NetworkItemDataSource(get())  }
-    factory { SearchViewModel(get()) }
+
+    single<Dictionary> {
+        AndroidDictionary(
+            androidContext()
+        )
+    }
+
+    factory { SearchViewModel(get(), get(), makeItemDomainMapper()) }
     factory { ItemViewModel(get()) }
+}
+
+private fun makeItemDomainMapper(): (Item, Dictionary) -> Product = { itemDomain, dic ->
+    mapItemDomain(itemDomain,dic)
 }
 
 private fun makeItemDataMapper(): (ItemResponse) -> Item = { itemDto ->

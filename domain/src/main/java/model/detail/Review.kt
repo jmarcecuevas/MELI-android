@@ -1,7 +1,7 @@
 package model.detail
 
 data class Review(
-    val ratingAverage: Double,
+    val ratingAverage: Float,
     val levels: Level,
     val reviews: List<Item>
 ){

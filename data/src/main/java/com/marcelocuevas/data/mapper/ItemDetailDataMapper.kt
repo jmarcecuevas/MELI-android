@@ -8,8 +8,10 @@ import model.detail.ItemDetail
 fun mapItemDetailDto(input: ItemDetailResponse): ItemDetail.Item {
     return ItemDetail.Item(
         input.id.orEmpty(),
+        input.title.orEmpty(),
         input.subtitle.orEmpty(),
         input.price.orZero(),
+        input.originalPrice.orZero(),
         input.soldQuantity.orZero(),
         input.condition.orEmpty(),
         input.thumbnail.orEmpty(),

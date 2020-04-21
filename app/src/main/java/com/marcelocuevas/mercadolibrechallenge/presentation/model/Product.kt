@@ -1,52 +1,45 @@
 package com.marcelocuevas.mercadolibrechallenge.presentation.model
 
-import java.text.NumberFormat
-import java.util.*
-import model.Item as DomainProduct
+import com.marcelocuevas.mercadolibrechallenge.presentation.utils.toPrettifiedPrice
+import model.dictionary.Dictionary
 
 data class Product(
+    private val dictionary: Dictionary,
     val id: String,
     val title: String,
     val imageURL: String,
     private val price: Double,
     private val sellerLabel: String,
-    val hasFreeShipping: Boolean,
+    private val hasFreeShipping: Boolean,
     val hasShippingGuaranteed: Boolean,
     val hasFulFillment: Boolean
 ) {
 
-    fun freeShippingLabel(): String {
-        return if (hasFreeShipping) "Envío gratis" else ""
-    }
+    fun freeShippingLabel(): String =
+        if (hasFreeShipping) dictionary.getString(FREE_SHIPPING) else EMPTY_STRING
 
-    fun shippingGuaranteedLabel(): String {
-        return if (hasShippingGuaranteed) "Envío con normalidad" else ""
-    }
 
-    fun sellerLabel(): String {
-        return if (sellerLabel.isNotEmpty()) "Vendido por $sellerLabel" else ""
-    }
+    fun shippingGuaranteedLabel(): String = if (hasShippingGuaranteed)
+            dictionary.getString(GUARANTEED_SHIPPING) else EMPTY_STRING
 
-    fun fulFillmentLabel(): String {
-        return "FULL"
-    }
 
-    fun priceLabel(): String {
-        val nf = NumberFormat.getNumberInstance(Locale.GERMAN)
-        nf.isGroupingUsed = true
-        return "$ ${nf.format(price)}"
+    fun sellerLabel(): String =
+       if (sellerLabel.isNotEmpty())
+            "${dictionary.getString(SOLD_BY)} $sellerLabel" else EMPTY_STRING
+
+
+    fun fulFillmentLabel(): String = dictionary.getString(FULL)
+
+    fun priceLabel(): String = price.toPrettifiedPrice()
+
+
+    companion object{
+        private const val FREE_SHIPPING = "dictionary_free_shipping"
+        private const val GUARANTEED_SHIPPING = "dictionary_guaranteed_shipping"
+        private const val SOLD_BY = "dictionary_sold_by"
+        private const val FULL = "dictionary_full"
+        private const val EMPTY_STRING = ""
     }
 }
-
-fun DomainProduct.mapToPresentation(): Product = Product(
-    id,
-    title,
-    imageURL,
-    price,
-    sellerNickname(),
-    hasFreeShipping(),
-    hasShippingGuaranteed(),
-    hasFulfillment()
-)
 
 

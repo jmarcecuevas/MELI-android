@@ -1,15 +1,17 @@
 package model.detail
 
-class ItemDetail(
+data class ItemDetail(
     val item: Item,
     val description: Description,
     val review: Review
 ){
 
     data class Item(
+        val id: String,
         val title: String,
         val subtitle: String,
         val price: Double,
+        val originalPrice: Double,
         val soldQuantity: Int,
         val condition: String,
         val thumbnail: String,

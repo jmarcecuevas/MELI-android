@@ -6,7 +6,7 @@ data class ReviewsResponse(
     val paging: PagingResponse?,
     val reviews: List<ReviewItemResponse>?,
     @SerializedName("rating_average")
-    val ratingAverage: Double?,
+    val ratingAverage: Float?,
     @SerializedName("rating_levels")
     val ratingLevels: RatingLevelsResponse?
 )

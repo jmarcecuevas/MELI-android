@@ -6,4 +6,13 @@
     <string name="product_detail_free_shipping_title">Llega gratis a tu domicilio</string>
     <string name="full">FULL</string>
     <string name="product_detail_store_pickup">Retiralo gratis en el store del vendedor</string>
+    <string name="guaranteed_shipping">Envío con normalidad</string>
+    <string name="buy_label">Comprar</string>
+    <string name="add_to_cart_label">Agregar al carrito</string>
+
+    <string name="dictionary_free_shipping">Envío gratis</string>
+    <string name="dictionary_guaranteed_shipping">Envío con normalidad</string>
+    <string name="dictionary_sold_by">Vendido por</string>
+    <string name="dictionary_full">FULL</string>
+
 </resources>
