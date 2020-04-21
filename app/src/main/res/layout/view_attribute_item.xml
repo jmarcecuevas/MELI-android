@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="attribute"
+            type="model.detail.ItemDetail.Item.Attribute" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/valueNameTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/mediumDimen"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintWidth_default="percent"
+            app:layout_constraintWidth_percent=".4"
+            android:lines="2"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:text="@{attribute.name}"
+            tools:text="Marca que vamos a usar en este ejemplo ">
+        </TextView>
+
+        <TextView
+            android:id="@+id/valueTextView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/mediumDimen"
+            android:paddingStart="@dimen/largeDimen"
+            android:paddingEnd="@dimen/largeDimen"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/valueNameTextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:lines="2"
+            android:ellipsize="end"
+            android:gravity="center_vertical"
+            android:text="@{attribute.valueName}"
+            tools:text="Motorola">
+        </TextView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

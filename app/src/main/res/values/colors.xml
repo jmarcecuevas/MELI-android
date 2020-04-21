@@ -8,4 +8,8 @@
     <color name="textDark">#383838</color>
     <color name="white">#FFFFFF</color>
 
+    <color name="gray20">#E2E2E2</color>
+    <color name="gray10">#ECECEC</color>
+    <color name="gray00">#F6F6F6</color>
+
 </resources>

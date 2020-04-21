@@ -1,5 +1,6 @@
 package model.detail
 
+
 data class ItemDetail(
     val item: Item,
     val description: Description,
@@ -32,4 +33,18 @@ data class ItemDetail(
             val valueName: String
         )
     }
+
+    fun hasReviews(): Boolean = review.reviews.isNotEmpty()
+
+    fun hasRating(): Boolean = review.ratingAverage != 0f
+
+    fun hasAttributes(): Boolean = item.attributes.isNotEmpty()
+
+    fun hasStorePickUp(): Boolean = item.shipping.storePickUp
+
+    fun hasFreeShipping(): Boolean = item.shipping.freeShipping
+
+    fun hasFulfillment(): Boolean = item.shipping.logisticType == "fulfillment"
+
+    fun hasShippingGuaranteed(): Boolean = item.tags.contains("shipping_guaranteed")
 }

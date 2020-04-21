@@ -3,11 +3,6 @@ package com.marcelocuevas.mercadolibrechallenge.presentation.utils
 import android.view.View
 import androidx.databinding.BindingAdapter
 
-@BindingAdapter("app:hideIfEmpty")
-fun hideIfEmpty(view: View, value: String) {
-    view.visibility = if (value.isEmpty()) View.GONE else View.VISIBLE
-}
-
 @BindingAdapter("app:hideIfFalse")
 fun hideIfFalse(view: View, value: Boolean) {
     view.visibility = if (value) View.VISIBLE else View.GONE

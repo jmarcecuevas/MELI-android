@@ -5,16 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.marcelocuevas.mercadolibrechallenge.R
-import com.marcelocuevas.mercadolibrechallenge.presentation.model.Product
+import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemUIModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.inflate
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.visibleOrGone
 import kotlinx.android.synthetic.main.view_product_item.view.*
 
-class ProductsListAdapter(val onClick: (String) -> Unit): RecyclerView.Adapter<ProductsListAdapter.ViewHolder>() {
+class ItemsAdapter(val onClick: (String) -> Unit): RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
-    private var items: List<Product> = emptyList()
+    private var items: List<ItemUIModel> = emptyList()
 
-    fun loadItems(newItems: List<Product>) {
+    fun loadItems(newItems: List<ItemUIModel>) {
         items = newItems
         notifyDataSetChanged()
     }
@@ -35,7 +35,7 @@ class ProductsListAdapter(val onClick: (String) -> Unit): RecyclerView.Adapter<P
 
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
-        fun bind(item: Product) {
+        fun bind(item: ItemUIModel) {
             with(item) {
                 Glide.with(itemView)
                     .load(imageURL)

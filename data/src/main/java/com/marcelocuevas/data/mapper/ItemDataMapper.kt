@@ -23,7 +23,8 @@ fun mapItemDto(input: ItemResponse): Item {
 fun mapShippingDto(input: ShippingResponse?): Item.Shipping {
     return Item.Shipping(
         input?.freeShipping.orFalse(),
-        input?.logisticType.orEmpty()
+        input?.logisticType.orEmpty(),
+        input?.storePickUp.orFalse()
     )
 }
 

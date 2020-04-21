@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.marcelocuevas.mercadolibrechallenge.presentation.model.Product
+import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemUIModel
 import model.Result
 import com.marcelocuevas.usecases.SearchProducts
 import kotlinx.coroutines.launch
@@ -14,14 +14,14 @@ import model.dictionary.Dictionary
 class SearchViewModel(
     private val searchProducts: SearchProducts,
     private val dictionary: Dictionary,
-    private val mapItemDomain: (Item,Dictionary) -> (Product)
+    private val mapItemDomain: (Item,Dictionary) -> (ItemUIModel)
 ): ViewModel() {
 
     private val errorMessage = MutableLiveData<String>()
-    private val products = MutableLiveData<List<Product>>()
+    private val products = MutableLiveData<List<ItemUIModel>>()
     private val isLoading = MutableLiveData<Boolean>()
 
-    val productsLiveData: LiveData<List<Product>>
+    val productsLiveData: LiveData<List<ItemUIModel>>
         get() = products
 
     val errorMessageLiveData: LiveData<String>

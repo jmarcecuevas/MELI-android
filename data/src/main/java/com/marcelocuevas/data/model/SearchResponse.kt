@@ -42,5 +42,7 @@ data class ShippingResponse(
     @SerializedName("free_shipping")
     val freeShipping: Boolean?,
     @SerializedName("logistic_type")
-    val logisticType: String?
+    val logisticType: String?,
+    @SerializedName("store_pick_up")
+    val storePickUp: Boolean?
 )

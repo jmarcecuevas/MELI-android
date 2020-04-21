@@ -14,22 +14,17 @@ data class Item(
 
     data class Shipping(
         val freeShipping: Boolean,
-        val logisticType: String
+        val logisticType: String,
+        val storePickUp: Boolean
     )
 
-    fun hasFreeShipping(): Boolean {
-        return shipping.freeShipping
-    }
+    fun hasStorePickUp(): Boolean = shipping.storePickUp
 
-    fun sellerNickname(): String {
-        return seller.nickname
-    }
+    fun hasFreeShipping(): Boolean = shipping.freeShipping
 
-    fun hasFulfillment(): Boolean {
-        return shipping.logisticType == "fulfillment"
-    }
+    fun sellerNickname(): String = seller.nickname
 
-    fun hasShippingGuaranteed(): Boolean {
-        return tags.contains("shipping_guaranteed")
-    }
+    fun hasFulfillment(): Boolean = shipping.logisticType == "fulfillment"
+
+    fun hasShippingGuaranteed(): Boolean = tags.contains("shipping_guaranteed")
 }

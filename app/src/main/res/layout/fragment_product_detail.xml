@@ -65,7 +65,8 @@
 
                     <include
                         layout="@layout/include_price_and_shipping_product_detail"
-                        bind:viewModel="@{viewModel}"/>
+                        bind:viewModel="@{viewModel}">
+                    </include>
 
                     <include layout="@layout/include_separator_product_detail" />
 
@@ -79,16 +80,19 @@
                     </TextView>
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/featuresRecyclerView"
+                        android:id="@+id/attributesRecyclerView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/xLargeDimen"
                         tools:itemCount="6"
-                        tools:listitem="@layout/view_feature_item" />
+                        tools:listitem="@layout/view_attribute_item" />
 
                     <include layout="@layout/include_separator_product_detail" />
 
-                    <include layout="@layout/include_description_product_detail" />
+                    <include
+                        layout="@layout/include_description_product_detail"
+                        bind:viewModel="@{viewModel}">
+                    </include>
 
                     <include layout="@layout/include_separator_product_detail" />
 

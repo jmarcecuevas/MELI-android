@@ -3,7 +3,7 @@ package com.marcelocuevas.mercadolibrechallenge.presentation.model
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.toPrettifiedPrice
 import model.dictionary.Dictionary
 
-data class Product(
+data class ItemUIModel(
     private val dictionary: Dictionary,
     val id: String,
     val title: String,

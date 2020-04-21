@@ -14,5 +14,9 @@
     <string name="dictionary_guaranteed_shipping">Envío con normalidad</string>
     <string name="dictionary_sold_by">Vendido por</string>
     <string name="dictionary_full">FULL</string>
+    <string name="dictionary_new_label">Nuevo</string>
+    <string name="dictionary_used_label">Usado</string>
+    <string name="dictionary_sold_label">vendidos</string>
+    <string name="product_detail_description_title">Descripción</string>
 
 </resources>

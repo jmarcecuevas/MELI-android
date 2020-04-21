@@ -21,8 +21,7 @@
             android:layout_marginBottom="@dimen/smallDimen"
             android:fontFamily="@font/lato"
             android:textColor="@color/textLight"
-            tools:visibility="visible"
-            android:text="@{viewModel.itemLiveData.item.condition}"
+            android:text="@{viewModel.itemLiveData.headerTitle()}"
             tools:text="Nuevo  |  15 vendidos">
 
         </TextView>
@@ -34,7 +33,7 @@
             android:layout_below="@+id/conditionTextView"
             android:textSize="18sp"
             android:fontFamily="@font/lato"
-            android:text="@{viewModel.itemLiveData.item.title}"
+            android:text="@{viewModel.itemLiveData.title}"
             tools:text="Faja Reductora Hombre Neoprene Deportiva Lumbar Modeladora Termica Cintura Abdomen Gym Gimnasio Deporte Calza Remera">
 
         </TextView>
@@ -64,9 +63,8 @@
             android:layout_marginTop="@dimen/smallDimen"
             android:fontFamily="@font/lato"
             android:textColor="@color/textLight"
-            android:text="@{`(` + viewModel.itemLiveData.review.reviews.size() + `)`}"
-            app:hideIfZero="@{viewModel.itemLiveData.review.reviews.size()}"
-            android:visibility="gone"
+            android:text="@{viewModel.itemLiveData.reviewsAmountLabel()}"
+            app:hideIfFalse="@{viewModel.itemLiveData.hasReviews()}"
             tools:visibility="visible"
             tools:text="(85)">
 

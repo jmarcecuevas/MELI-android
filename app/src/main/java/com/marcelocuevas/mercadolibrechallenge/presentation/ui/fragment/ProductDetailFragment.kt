@@ -1,8 +1,10 @@
 package com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment
 
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.marcelocuevas.mercadolibrechallenge.R
 import com.marcelocuevas.mercadolibrechallenge.databinding.FragmentProductDetailBinding
+import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.AttributesAdapter
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.SliderAdapter
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.shouldShow
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewModel
@@ -10,6 +12,9 @@ import com.opensooq.pluto.base.PlutoAdapter
 import com.opensooq.pluto.listeners.OnItemClickListener
 import com.opensooq.pluto.listeners.OnSlideChangeListener
 import kotlinx.android.synthetic.main.fragment_product_detail.*
+import kotlinx.android.synthetic.main.fragment_product_detail.progressBar
+import kotlinx.android.synthetic.main.fragment_product_detail.toolbar
+import kotlinx.android.synthetic.main.fragment_search_results.*
 import model.detail.ItemDetail
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -37,7 +42,8 @@ class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>()
 
     private fun startObserving() {
         viewModel.itemLiveData.observe(this, Observer {
-            showPictures(it.item.pictures)
+            showPictures(it.pictures.toMutableList())
+            showAttributes(it.attributes)
         })
 
         viewModel.errorMessageLiveData.observe(this, Observer {
@@ -49,12 +55,8 @@ class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>()
         })
     }
 
-
-    private fun showPictures(pictures: List<ItemDetail.Item.Picture>) {
-        val list: MutableList<String> = arrayListOf()
-        pictures.map { list.add(it.url) }
-
-        val adapter = SliderAdapter(list, object : OnItemClickListener<String> {
+    private fun showPictures(pictures: MutableList<String>) {
+        val adapter = SliderAdapter(pictures, object : OnItemClickListener<String> {
             override fun onItemClicked(item: String?, position: Int) {
 
             }
@@ -66,5 +68,12 @@ class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>()
             }
         })
         picturesSlider.create(adapter, lifecycle = lifecycle)
+    }
+
+    private fun showAttributes(attributes: List<ItemDetail.Item.Attribute>) {
+        attributesRecyclerView.layoutManager = LinearLayoutManager(context)
+        val adapter = AttributesAdapter(context)
+        attributesRecyclerView.adapter = adapter
+        adapter.loadItems(attributes)
     }
 }

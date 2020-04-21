@@ -3,7 +3,7 @@ package com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.marcelocuevas.mercadolibrechallenge.R
-import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.ProductsListAdapter
+import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.ItemsAdapter
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.shouldShow
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.fragment_search_results.*
@@ -12,7 +12,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SearchResultsFragment: GenericFragment() {
 
     private val viewModel by viewModel<SearchViewModel>()
-    private val adapter = ProductsListAdapter() {
+    private val adapter = ItemsAdapter() {
         navigateToDetail(it)
     }
 
