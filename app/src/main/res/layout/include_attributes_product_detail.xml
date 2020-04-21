@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+    <View
+        android:id="@+id/separatorView"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        app:layout_constraintTop_toBottomOf="@+id/addToCartButton"
+        android:layout_marginTop="@dimen/xLargeDimen"
+        android:background="@color/gray10"
+        tools:visibility="visible">
+    </View>
+
+    <TextView
+        android:id="@+id/attributesTitleTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/separatorView"
+        android:layout_marginTop="@dimen/xLargeDimen"
+        app:layout_constraintStart_toStartOf="parent"
+        android:fontFamily="@font/lato"
+        android:textSize="18sp"
+        android:text="@string/product_detail_features_title"
+        android:visibility="visible">
+    </TextView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/attributesRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/xLargeDimen"
+        app:layout_constraintTop_toBottomOf="@+id/attributesTitleTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:itemCount="6"
+        tools:listitem="@layout/view_attribute_item" />
+
+</merge>
