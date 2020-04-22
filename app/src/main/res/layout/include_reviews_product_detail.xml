@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewModel">
+        </variable>
+    </data>
+
+    <merge tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
+
+        <View
+            android:id="@+id/separator"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
+            android:layout_marginTop="@dimen/xLargeDimen"
+            android:background="@color/gray10"
+            hideIfFalse="@{viewModel.itemLiveData.hasReviews()}"
+            tools:visibility="visible">
+        </View>
 
         <TextView
             android:id="@+id/reviewsTitleTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
+            app:layout_constraintTop_toBottomOf="@id/separator"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="@dimen/xLargeDimen"
             android:fontFamily="@font/lato"
-            android:textSize="22sp"
+            android:textSize="20sp"
+            hideIfFalse="@{viewModel.itemLiveData.hasReviews()}"
+            android:text="@{viewModel.itemLiveData.reviewsTitleLabel()}"
             tools:text="Opiniones sobre Kanji Home KJH-BL1000HB01">
         </TextView>
 
@@ -22,8 +44,10 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/reviewsTitleTextView"
             android:layout_marginTop="@dimen/xLargeDimen"
-            android:textSize="52sp"
+            android:textSize="48sp"
             android:fontFamily="@font/lato"
+            hideIfFalse="@{viewModel.itemLiveData.hasReviews()}"
+            android:text="@{viewModel.itemLiveData.ratingAverageLabel()}"
             tools:text="4.5">
         </TextView>
 
@@ -38,7 +62,7 @@
             android:layout_marginStart="@dimen/largeDimen"
             android:layout_marginEnd="@dimen/mediumDimen"
             android:orientation="vertical"
-            android:visibility="invisible"
+            hideIfFalse="@{viewModel.itemLiveData.hasReviews()}"
             tools:visibility="visible">
 
             <RatingBar
@@ -49,40 +73,46 @@
                 android:theme="@style/RatingBar"
                 android:numStars="5"
                 android:stepSize="1"
-                tools:rating="4"/>
+                android:rating="@{viewModel.itemLiveData.review.ratingAverage}"
+                tools:rating="4" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato"
                 android:textColor="@color/textLight"
+                android:text="@{viewModel.itemLiveData.averageLabel()}"
                 tools:text="Promedio entre 176 opiniones">
             </TextView>
 
         </LinearLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/reviewsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/reviewsAverageContainer"
-        android:layout_marginTop="17dp"
-        tools:itemCount="3"
-        tools:listitem="@layout/view_review_item">
-    </androidx.recyclerview.widget.RecyclerView>
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/reviewsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/reviewsAverageContainer"
+            android:layout_marginTop="17dp"
+            hideIfFalse="@{viewModel.itemLiveData.hasReviews()}"
+            tools:itemCount="3"
+            tools:listitem="@layout/view_review_item">
+        </androidx.recyclerview.widget.RecyclerView>
 
-    <Button
-        android:id="@+id/showAllReviewsButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@+id/reviewsRecyclerView"
-        android:layout_marginTop="@dimen/xLargeDimen"
-        android:textAllCaps="false"
-        android:textColor="@color/colorAccent"
-        android:background="@color/white"
-        android:text="@string/product_detail_see_all_reviews">
-    </Button>
+        <Button
+            android:id="@+id/showAllReviewsButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/reviewsRecyclerView"
+            android:layout_marginTop="@dimen/xLargeDimen"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:background="@color/white"
+            hideIfFalse="@{viewModel.itemLiveData.hasReviews()}"
+            android:text="@string/product_detail_see_all_reviews">
+        </Button>
 
-</merge>
+    </merge>
+
+</layout>
 
 

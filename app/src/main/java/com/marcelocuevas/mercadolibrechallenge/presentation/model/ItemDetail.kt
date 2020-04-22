@@ -40,7 +40,17 @@ data class ItemDetail(
         }
     }
 
+    fun ratingAverageLabel() = "${review.ratingAverage}"
+
+    fun averageLabel(): String {
+        val algo =  "${dictionary.getString(AVERAGE_BETWEEN)} ${review.reviews.size} ${dictionary.getString(
+            REVIEWS_LABEL)}"
+        return algo
+    }
+
     fun reviewsAmountLabel() = "(${review.reviews.size})"
+
+    fun reviewsTitleLabel() = "${dictionary.getString(REVIEWS_ABOUT)} $title"
 
     fun hasReviews(): Boolean = review.reviews.isNotEmpty()
 
@@ -59,9 +69,12 @@ data class ItemDetail(
         private const val EMPTY_STRING = ""
         private const val NEW = "new"
         private const val USED = "used"
+        private const val REVIEWS_LABEL = "dictionary_reviews_label"
         private const val NEW_LABEL = "dictionary_new_label"
         private const val USED_LABEL = "dictionary_used_label"
         private const val GUARANTEED_SHIPPING = "dictionary_guaranteed_shipping"
         private const val SOLD = "dictionary_sold_label"
+        private const val REVIEWS_ABOUT = "dictionary_reviews_about"
+        private const val AVERAGE_BETWEEN = "dictionary_average_between"
     }
 }

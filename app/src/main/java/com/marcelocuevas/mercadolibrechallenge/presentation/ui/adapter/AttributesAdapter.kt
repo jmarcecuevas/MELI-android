@@ -11,14 +11,10 @@ import com.marcelocuevas.mercadolibrechallenge.databinding.ViewAttributeItemBind
 import model.detail.ItemDetail
 
 
-class AttributesAdapter(val context: Context?) : RecyclerView.Adapter<AttributesAdapter.ViewHolder>() {
-
-    private var items: List<ItemDetail.Item.Attribute> = emptyList()
-
-    fun loadItems(newItems: List<ItemDetail.Item.Attribute>) {
-        items = newItems
-        notifyDataSetChanged()
-    }
+class AttributesAdapter(
+    val context: Context?,
+    val items: List<ItemDetail.Item.Attribute>
+) : RecyclerView.Adapter<AttributesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
@@ -30,7 +26,6 @@ class AttributesAdapter(val context: Context?) : RecyclerView.Adapter<Attributes
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(items[position])
-
 
 
     inner class ViewHolder(private val binding: ViewAttributeItemBinding) : RecyclerView.ViewHolder(binding.root) {

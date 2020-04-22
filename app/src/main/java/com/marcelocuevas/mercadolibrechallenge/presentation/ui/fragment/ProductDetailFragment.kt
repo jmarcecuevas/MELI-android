@@ -5,17 +5,18 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.marcelocuevas.mercadolibrechallenge.R
 import com.marcelocuevas.mercadolibrechallenge.databinding.FragmentProductDetailBinding
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.AttributesAdapter
+import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.ReviewsAdapter
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.SliderAdapter
-import com.marcelocuevas.mercadolibrechallenge.presentation.utils.shouldShow
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewModel
 import com.opensooq.pluto.base.PlutoAdapter
 import com.opensooq.pluto.listeners.OnItemClickListener
 import com.opensooq.pluto.listeners.OnSlideChangeListener
 import kotlinx.android.synthetic.main.fragment_product_detail.*
-import kotlinx.android.synthetic.main.fragment_product_detail.progressBar
 import kotlinx.android.synthetic.main.fragment_product_detail.toolbar
 import kotlinx.android.synthetic.main.include_attributes_product_detail.*
+import kotlinx.android.synthetic.main.include_reviews_product_detail.*
 import model.detail.ItemDetail
+import model.detail.Review
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -44,6 +45,7 @@ class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>()
         viewModel.itemLiveData.observe(this, Observer {
             showPictures(it.pictures.toMutableList())
             showAttributes(it.attributes)
+            showReviews(it.review.reviews)
         })
 
         viewModel.errorMessageLiveData.observe(this, Observer {
@@ -51,7 +53,7 @@ class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>()
         })
 
         viewModel.isLoadingLiveData.observe(this, Observer {
-            progressBar.shouldShow(it)
+            //progressBar.shouldShow(it)
         })
     }
 
@@ -72,8 +74,11 @@ class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>()
 
     private fun showAttributes(attributes: List<ItemDetail.Item.Attribute>) {
         attributesRecyclerView.layoutManager = LinearLayoutManager(context)
-        val adapter = AttributesAdapter(context)
-        attributesRecyclerView.adapter = adapter
-        adapter.loadItems(attributes)
+        attributesRecyclerView.adapter = AttributesAdapter(context, attributes.take(5))
+    }
+
+    private fun showReviews(reviews: List<Review.Item>) {
+        reviewsRecyclerView.layoutManager = LinearLayoutManager(context)
+        reviewsRecyclerView.adapter = ReviewsAdapter(context, reviews.take(3))
     }
 }

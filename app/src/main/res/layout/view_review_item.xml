@@ -1,80 +1,95 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_marginTop="@dimen/largeDimen">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <RatingBar
-        android:id="@+id/starsRatingBar"
-        android:layout_width="wrap_content"
+    <data>
+        <variable
+            name="review"
+            type="model.detail.Review.Item">
+        </variable>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="@dimen/smallDimen"
-        style="?android:attr/ratingBarStyleSmall"
-        android:theme="@style/RatingBar"
-        android:numStars="5"
-        android:stepSize="1"
-        tools:rating="4"/>
+        android:layout_marginTop="@dimen/largeDimen">
+
+        <RatingBar
+            android:id="@+id/starsRatingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/smallDimen"
+            style="?android:attr/ratingBarStyleSmall"
+            android:theme="@style/RatingBar"
+            android:numStars="5"
+            android:stepSize="1"
+            android:rating="@{review.rate}"
+            tools:rating="4" />
 
 
-    <TextView
-        android:id="@+id/titleTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/mediumDimen"
-        android:layout_below="@+id/starsRatingBar"
-        tools:text="Súper práctico para el que está siempre en la cocina "/>
+        <TextView
+            android:id="@+id/titleTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mediumDimen"
+            android:layout_below="@+id/starsRatingBar"
+            android:text="@{review.title}"
+            tools:text="Súper práctico para el que está siempre en la cocina " />
 
-    <TextView
-        android:id="@+id/descriptionTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/mediumDimen"
-        android:layout_marginBottom="@dimen/largeDimen"
-        android:layout_below="@+id/titleTextView"
-        android:textColor="@color/textLight"
-        android:maxLines="3"
-        android:ellipsize="end"
-        tools:text="Impresionante, muy satisfecha con el samsung s9, tenía un s7 y son todos excelentes! lo único que le encontré es q luego de una actualización de software, que x lo gral lo programo para la noche, el telefono no vuelve a encender solo, y por eso no suena la alarma de la mañana. Todavia no he terminado de descubrir todo, pero la rapidez y reaccion de todo el teléfono es genial."/>
+        <TextView
+            android:id="@+id/descriptionTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/mediumDimen"
+            android:layout_marginBottom="@dimen/largeDimen"
+            android:layout_below="@+id/titleTextView"
+            android:textColor="@color/textLight"
+            android:maxLines="3"
+            android:ellipsize="end"
+            android:text="@{review.content}"
+            tools:text="Impresionante, muy satisfecha con el samsung s9, tenía un s7 y son todos excelentes! lo único que le encontré es q luego de una actualización de software, que x lo gral lo programo para la noche, el telefono no vuelve a encender solo, y por eso no suena la alarma de la mañana. Todavia no he terminado de descubrir todo, pero la rapidez y reaccion de todo el teléfono es genial." />
 
-    <ImageView
-        android:id="@+id/positiveImageView"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_below="@+id/descriptionTextView"
-        android:src="@drawable/ic_thumbs_up"
-        android:tint="@color/textLight">
-    </ImageView>
+        <ImageView
+            android:id="@+id/positiveImageView"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_below="@+id/descriptionTextView"
+            android:src="@drawable/ic_thumbs_up"
+            android:tint="@color/textLight">
+        </ImageView>
 
-    <TextView
-        android:id="@+id/positiveTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/descriptionTextView"
-        android:layout_toEndOf="@+id/positiveImageView"
-        android:layout_marginStart="@dimen/xSmallDimen"
-        tools:text="2">
-    </TextView>
+        <TextView
+            android:id="@+id/positiveTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/descriptionTextView"
+            android:layout_toEndOf="@+id/positiveImageView"
+            android:layout_marginStart="@dimen/xSmallDimen"
+            android:text="@{String.valueOf(review.likes)}"
+            tools:text="2">
+        </TextView>
 
-    <ImageView
-        android:id="@+id/negativeImageView"
-        android:layout_width="18dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="@dimen/largeDimen"
-        android:layout_below="@+id/descriptionTextView"
-        android:layout_toEndOf="@+id/positiveTextView"
-        android:src="@drawable/ic_thumbs_down"
-        android:tint="@color/textLight">
-    </ImageView>
+        <ImageView
+            android:id="@+id/negativeImageView"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:layout_marginStart="@dimen/largeDimen"
+            android:layout_below="@+id/descriptionTextView"
+            android:layout_toEndOf="@+id/positiveTextView"
+            android:src="@drawable/ic_thumbs_down"
+            android:tint="@color/textLight">
+        </ImageView>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/descriptionTextView"
-        android:layout_toEndOf="@+id/negativeImageView"
-        android:layout_marginStart="@dimen/xSmallDimen"
-        tools:text="10">
-    </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/descriptionTextView"
+            android:layout_toEndOf="@+id/negativeImageView"
+            android:layout_marginStart="@dimen/xSmallDimen"
+            android:text="@{String.valueOf(review.dislikes)}"
+            tools:text="10">
+        </TextView>
 
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

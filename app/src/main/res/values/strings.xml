@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">MercadoLibreChallenge</string>
     <string name="serch_query_hint">Buscar en Mercado Libre</string>
     <string name="product_detail_see_all_reviews">Ver todas las opiniones</string>
@@ -9,6 +9,8 @@
     <string name="guaranteed_shipping">Envío con normalidad</string>
     <string name="buy_label">Comprar</string>
     <string name="add_to_cart_label">Agregar al carrito</string>
+    <string name="product_detail_description_title">Descripción</string>
+    <string name="product_detail_features_title">Características principales</string>
 
     <string name="dictionary_free_shipping">Envío gratis</string>
     <string name="dictionary_guaranteed_shipping">Envío con normalidad</string>
@@ -17,7 +19,8 @@
     <string name="dictionary_new_label">Nuevo</string>
     <string name="dictionary_used_label">Usado</string>
     <string name="dictionary_sold_label">vendidos</string>
-    <string name="product_detail_description_title">Descripción</string>
-    <string name="product_detail_features_title">Características principales</string>
+    <string name="dictionary_average_between">Promedio entre</string>
+    <string name="dictionary_reviews_label">opiniones</string>
+    <string name="dictionary_reviews_about" tools:ignore="ExtraTranslation">Opiniones sobre</string>
 
 </resources>
