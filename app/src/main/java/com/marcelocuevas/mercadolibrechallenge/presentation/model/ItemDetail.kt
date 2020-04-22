@@ -54,6 +54,8 @@ data class ItemDetail(
 
     fun hasReviews(): Boolean = review.reviews.isNotEmpty()
 
+    fun hasAttributes(): Boolean = attributes.isNotEmpty()
+
     fun priceLabel(): String = price.toPrettifiedPrice()
 
     fun originalPrice(): String = originalPrice.toPrettifiedPrice()

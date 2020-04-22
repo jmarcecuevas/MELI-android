@@ -17,7 +17,7 @@
             android:id="@+id/separatorVieww"
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            app:layout_constraintTop_toBottomOf="@+id/attributesRecyclerView"
+            app:layout_constraintTop_toBottomOf="@+id/showAllAttrsButton"
             android:layout_marginTop="@dimen/xLargeDimen"
             android:background="@color/gray10"
             tools:visibility="visible">

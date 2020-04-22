@@ -111,7 +111,7 @@
             android:background="@drawable/bg_gray_rounded"
             android:textAlignment="textStart"
             android:drawableEnd="@drawable/ic_navigation_next"
-            hideIfFalse="@{viewModel.itemLiveData.hasReviews() || viewModel.itemLiveData.review.reviews.size() &lt;= 3}"
+            hideIfFalse="@{viewModel.itemLiveData.hasReviews() &amp;&amp; viewModel.itemLiveData.review.reviews.size() > 3}"
             android:text="@string/product_detail_see_all_reviews">
         </Button>
 
