@@ -3,30 +3,31 @@ package com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.marcelocuevas.mercadolibrechallenge.R
-import com.marcelocuevas.mercadolibrechallenge.databinding.FragmentProductDetailBinding
+import com.marcelocuevas.mercadolibrechallenge.databinding.FragmentItemDetailBinding
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.AttributesAdapter
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.ReviewsAdapter
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.SliderAdapter
+import com.marcelocuevas.mercadolibrechallenge.presentation.utils.shouldShow
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewModel
 import com.opensooq.pluto.base.PlutoAdapter
 import com.opensooq.pluto.listeners.OnItemClickListener
 import com.opensooq.pluto.listeners.OnSlideChangeListener
-import kotlinx.android.synthetic.main.fragment_product_detail.*
-import kotlinx.android.synthetic.main.fragment_product_detail.toolbar
+import kotlinx.android.synthetic.main.fragment_item_detail.*
+import kotlinx.android.synthetic.main.fragment_item_detail.toolbar
 import kotlinx.android.synthetic.main.include_attributes_product_detail.*
 import kotlinx.android.synthetic.main.include_reviews_product_detail.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>() {
+class ItemDetailFragment: DataBindingFragment<FragmentItemDetailBinding>() {
 
     private val viewModel by viewModel<ItemViewModel>()
 
     private val id: String
-        get() = ProductDetailFragmentArgs.fromBundle(requireArguments()).id
+        get() = ItemDetailFragmentArgs.fromBundle(requireArguments()).id
 
-    override fun layoutRes(): Int = R.layout.fragment_product_detail
+    override fun layoutRes(): Int = R.layout.fragment_item_detail
 
     override fun init() {
         setupNav(toolbar)
@@ -62,7 +63,7 @@ class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>()
         })
 
         viewModel.loading.observe(this, Observer {
-            //progressBar.shouldShow(it)
+            progressBar.shouldShow(it)
         })
     }
 
@@ -94,7 +95,7 @@ class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>()
     private fun navigateToAttrsFragment() {
         val attributes = viewModel.item.value?.attributes?.toTypedArray()
         attributes?.let {
-            val directions = ProductDetailFragmentDirections.
+            val directions = ItemDetailFragmentDirections.
             toAttributesFragment(it)
             navigateTo(directions) }
     }
@@ -102,7 +103,7 @@ class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>()
     private fun navigateToReviewsFragment() {
         val review = viewModel.item.value?.review
         review?.let {
-            val directions = ProductDetailFragmentDirections.
+            val directions = ItemDetailFragmentDirections.
                 toReviewsFragment(it)
             navigateTo(directions)
         }

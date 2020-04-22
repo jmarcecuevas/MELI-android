@@ -1,6 +1,7 @@
 package com.marcelocuevas.mercadolibrechallenge.presentation.utils
 
 import android.app.Activity
+import android.app.ProgressDialog.show
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE

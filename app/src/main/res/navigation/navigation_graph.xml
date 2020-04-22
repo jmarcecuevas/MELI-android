@@ -36,7 +36,7 @@
     </fragment>
     <fragment
         android:id="@+id/product_detail_fragment"
-        android:name="com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment.ProductDetailFragment"
+        android:name="com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment.ItemDetailFragment"
         android:label="@string/fragment_product_detail_title">
         <argument
             android:name="id"

@@ -82,6 +82,7 @@ dependencies {
     // or Koin for Android Fragment Factory (unstable version)
     implementation "org.koin:koin-androidx-fragment:$koin_version"
 
+    implementation 'com.airbnb.android:lottie:2.7.0'
     implementation 'com.opensooq.android:pluto:1.6'
 
     testImplementation 'junit:junit:4.12'

@@ -21,6 +21,7 @@
             android:layout_marginBottom="@dimen/smallDimen"
             android:fontFamily="@font/lato"
             android:textColor="@color/textLight"
+            hideIfFalse="@{!viewModel.item.headerTitle().empty}"
             android:text="@{viewModel.item.headerTitle()}"
             tools:text="Nuevo  |  15 vendidos">
 
@@ -31,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/conditionTextView"
+            android:layout_marginTop="@dimen/smallDimen"
             android:textSize="18sp"
             android:fontFamily="@font/lato"
             android:text="@{viewModel.item.title}"

@@ -16,9 +16,9 @@ class NetworkSearchDataSource(private val searchAPI: SearchAPI):
             if (response.isSuccessful) {
                 response.body()?.let { return Result.Success(it.results) }
             }
-            return Result.Error(IOException("Ha ocurrido un error"))
+            return Result.Error(IOException("An error ocurred"))
         } catch (e: NoConnectivityException) {
-            return Result.Error(IOException("No hay internet"))
+            return Result.Error(IOException(e.message))
         }
     }
 }

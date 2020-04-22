@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.marcelocuevas.mercadolibrechallenge.R
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.ItemsAdapter
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.shouldShow
+import com.marcelocuevas.mercadolibrechallenge.presentation.utils.visibleOrGone
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.fragment_search_results.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -26,7 +27,11 @@ class SearchResultsFragment: BaseFragment() {
         setupNav(toolbar)
         setupRecyclerView()
 
-        viewModel.search(queryText)
+        viewModel.onStart(queryText)
+
+        errorView.onClick = {
+            viewModel.retryClicked()
+        }
 
         startObserving()
     }
@@ -41,11 +46,12 @@ class SearchResultsFragment: BaseFragment() {
             adapter.loadItems(it)
         })
 
-        viewModel.errorMessageLiveData.observe(this, Observer {
-
+        viewModel.hasError.observe(this, Observer {
+            errorView.visibleOrGone(it)
+            if (it) errorView.show() else errorView.hide()
         })
 
-        viewModel.isLoadingLiveData.observe(this, Observer {
+        viewModel.loading.observe(this, Observer {
             progressBar.shouldShow(it)
         })
     }

@@ -18,9 +18,9 @@ class NetworkItemDataSource(private val itemAPI: ItemAPI):
             if (response.isSuccessful) {
                 response.body()?.let { return Result.Success(it) }
             }
-            return Result.Error(IOException("Ha ocurrido un error"))
+            return Result.Error(IOException("An error ocurred"))
         } catch (e: NoConnectivityException) {
-            return Result.Error(IOException("No hay internet"))
+            return Result.Error(IOException(e.message))
         }
     }
 
@@ -31,9 +31,9 @@ class NetworkItemDataSource(private val itemAPI: ItemAPI):
                 response.body()?.let {
                     if (it.isNotEmpty()) return Result.Success(it[0]) }
             }
-            return Result.Error(IOException("Ha ocurrido un error"))
+            return Result.Error(IOException("An error ocurred"))
         } catch (e: NoConnectivityException) {
-            return Result.Error(IOException("No hay internet"))
+            return Result.Error(IOException(e.message))
         }
     }
 
@@ -43,9 +43,9 @@ class NetworkItemDataSource(private val itemAPI: ItemAPI):
             if (response.isSuccessful) {
                 response.body()?.let { return Result.Success(it) }
             }
-            return Result.Error(IOException("Ha ocurrido un error"))
+            return Result.Error(IOException("An error ocurred"))
         } catch (e: NoConnectivityException) {
-            return Result.Error(IOException("No hay internet"))
+            return Result.Error(IOException(e.message))
         }
     }
 }
