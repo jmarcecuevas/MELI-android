@@ -24,4 +24,9 @@
     <string name="dictionary_reviews_label">opiniones</string>
     <string name="dictionary_reviews_about" tools:ignore="ExtraTranslation">Opiniones sobre</string>
 
+    <string name="fragment_attributes_title">Información del producto</string>
+    <string name="fragment_reviews_title">Opiniones</string>
+    <string name="fragment_search_results_title">Resultados de búsqueda</string>
+    <string name="fragment_product_detail_title">Producto</string>
+
 </resources>

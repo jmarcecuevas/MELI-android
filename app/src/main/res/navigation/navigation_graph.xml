@@ -26,7 +26,7 @@
     <fragment
         android:id="@+id/search_results_fragment"
         android:name="com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment.SearchResultsFragment"
-        android:label="Resultados de búsqueda">
+        android:label="@string/fragment_search_results_title">
         <argument
             android:name="queryText"
             app:argType="string" />
@@ -37,9 +37,23 @@
     <fragment
         android:id="@+id/product_detail_fragment"
         android:name="com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment.ProductDetailFragment"
-        android:label="Producto">
+        android:label="@string/fragment_product_detail_title">
         <argument
             android:name="id"
             app:argType="string" />
+        <action
+            android:id="@+id/action_product_detail_fragment_to_attributesFragment"
+            app:destination="@id/attributesFragment" />
+        <action
+            android:id="@+id/action_product_detail_fragment_to_reviewsFragment"
+            app:destination="@id/reviewsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/reviewsFragment"
+        android:name="com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment.ReviewsFragment"
+        android:label="@string/fragment_reviews_title" />
+    <fragment
+        android:id="@+id/attributesFragment"
+        android:name="com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment.AttributesFragment"
+        android:label="@string/fragment_attributes_title" />
 </navigation>
