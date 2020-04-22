@@ -1,11 +1,11 @@
 package model.detail
 
-data class Review(
+data class ReviewModel(
     val ratingAverage: Float,
-    val levels: Level,
-    val reviews: List<Item>
+    val levels: LevelModel,
+    val reviews: List<ItemModel>
 ){
-    data class Item(
+    data class ItemModel(
         val title: String,
         val content: String,
         val rate: Int,
@@ -15,7 +15,7 @@ data class Review(
         val revelance: Int
     )
 
-    data class Level(
+    data class LevelModel(
         val oneStar: Int,
         val twoStar: Int,
         val threeStar: Int,

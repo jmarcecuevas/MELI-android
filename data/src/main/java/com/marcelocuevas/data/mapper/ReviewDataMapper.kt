@@ -3,10 +3,10 @@ package com.marcelocuevas.data.mapper
 import com.marcelocuevas.data.model.RatingLevelsResponse
 import com.marcelocuevas.data.model.ReviewItemResponse
 import com.marcelocuevas.data.model.ReviewsResponse
-import model.detail.Review
+import model.detail.ReviewModel
 
-fun mapReviewDto(input: ReviewsResponse): Review {
-    return Review(
+fun mapReviewDto(input: ReviewsResponse): ReviewModel {
+    return ReviewModel(
         input.ratingAverage.orZero(),
         mapLevelsDto(input.ratingLevels),
         mapNullInputList(input.reviews) { reviewDto ->
@@ -15,8 +15,8 @@ fun mapReviewDto(input: ReviewsResponse): Review {
     )
 }
 
-fun mapLevelsDto(input: RatingLevelsResponse?): Review.Level {
-    return Review.Level(
+fun mapLevelsDto(input: RatingLevelsResponse?): ReviewModel.LevelModel {
+    return ReviewModel.LevelModel(
         input?.oneStar.orZero(),
         input?.twoStar.orZero(),
         input?.threeStar.orZero(),
@@ -25,8 +25,8 @@ fun mapLevelsDto(input: RatingLevelsResponse?): Review.Level {
     )
 }
 
-fun mapReviewItemDto(input: ReviewItemResponse): Review.Item {
-    return Review.Item(
+fun mapReviewItemDto(input: ReviewItemResponse): ReviewModel.ItemModel {
+    return ReviewModel.ItemModel(
         input.title.orEmpty(),
         input.content.orEmpty(),
         input.rate.orZero(),

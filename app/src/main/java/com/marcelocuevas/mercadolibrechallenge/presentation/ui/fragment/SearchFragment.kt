@@ -4,7 +4,7 @@ import androidx.appcompat.widget.SearchView
 import com.marcelocuevas.mercadolibrechallenge.R
 import kotlinx.android.synthetic.main.fragment_search.*
 
-class SearchFragment: GenericFragment() {
+class SearchFragment: BaseFragment() {
 
     override fun layoutRes() = R.layout.fragment_search
 

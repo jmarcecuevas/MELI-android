@@ -21,8 +21,8 @@
             android:fontFamily="@font/lato"
             android:textColor="@color/textLight"
             android:textSize="16sp"
-            hideIfFalse="@{!viewModel.itemLiveData.originalPriceIsZero()}"
-            android:text="@{viewModel.itemLiveData.originalPrice()}"
+            hideIfFalse="@{!viewModel.item.originalPriceIsZero()}"
+            android:text="@{viewModel.item.originalPrice()}"
             android:background="@drawable/strikethrough_layer_list"
             tools:text="$ 28.728">
         </TextView>
@@ -35,8 +35,8 @@
             app:layout_constraintStart_toStartOf="parent"
             android:fontFamily="@font/lato"
             android:textSize="28sp"
-            android:text="@{viewModel.itemLiveData.priceLabel()}"
-            hideIfFalse="@{!viewModel.isLoadingLiveData().booleanValue()}"
+            android:text="@{viewModel.item.priceLabel()}"
+            hideIfFalse="@{!viewModel.loading.booleanValue()}"
             tools:text="$ 32.799">
         </TextView>
 
@@ -53,8 +53,8 @@
             android:ellipsize="end"
             android:background="@drawable/bg_accent_rounded"
             android:textColor="@android:color/white"
-            hideIfFalse="@{viewModel.itemLiveData.hasShippingGuaranteed}"
-            android:text="@{viewModel.itemLiveData.shippingGuaranteedLabel()}"
+            hideIfFalse="@{viewModel.item.hasShippingGuaranteed}"
+            android:text="@{viewModel.item.shippingGuaranteedLabel()}"
             tools:visibility="visible"
             tools:text="Envío con normalidad">
         </TextView>
@@ -72,7 +72,7 @@
             android:textSize="16sp"
             android:textColor="@color/colorGreen"
             android:text="@string/product_detail_free_shipping_title"
-            hideIfFalse="@{viewModel.itemLiveData.hasFreeShipping}"
+            hideIfFalse="@{viewModel.item.hasFreeShipping}"
             tools:visibility="visible">
         </TextView>
 
@@ -89,7 +89,7 @@
             android:textSize="16sp"
             android:textColor="@color/colorGreen"
             android:text="@string/full"
-            hideIfFalse="@{viewModel.itemLiveData.hasFulfillment}"
+            hideIfFalse="@{viewModel.item.hasFulfillment}"
             tools:visibility="visible">
         </TextView>
 
@@ -106,7 +106,7 @@
             android:textSize="16sp"
             android:textColor="@color/colorGreen"
             android:text="@string/product_detail_store_pickup"
-            hideIfFalse="@{viewModel.itemLiveData.hasStorePickUp}">
+            hideIfFalse="@{viewModel.item.hasStorePickUp}">
         </TextView>
 
         <Button
@@ -123,7 +123,7 @@
             android:textAllCaps="false"
             android:background="@drawable/bg_accent_rounded"
             android:text="@string/buy_label"
-            hideIfFalse="@{!viewModel.isLoadingLiveData().booleanValue()}"
+            hideIfFalse="@{!viewModel.loading.booleanValue()}"
             tools:visibility="visible"
             tools:text="Comprar ahora">
         </Button>
@@ -142,7 +142,7 @@
             android:textAllCaps="false"
             android:background="@drawable/bg_transparent_rounded"
             android:text="@string/add_to_cart_label"
-            hideIfFalse="@{!viewModel.isLoadingLiveData().booleanValue()}"
+            hideIfFalse="@{!viewModel.loading.booleanValue()}"
             tools:visibility="visible"
             tools:text="Agregar al carrito">
         </Button>

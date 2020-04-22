@@ -1,11 +1,11 @@
 package com.marcelocuevas.mercadolibrechallenge.presentation.model
 
+import android.os.Parcelable
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.toPrettifiedPrice
-import model.detail.ItemDetail
-import model.detail.Review
+import kotlinx.android.parcel.Parcelize
 import model.dictionary.Dictionary
 
-data class ItemDetail(
+data class ItemDetailUIModel(
     val dictionary: Dictionary,
     val title: String,
     val subtitle: String,
@@ -23,8 +23,64 @@ data class ItemDetail(
     val tags: List<String>,
     val pictures: List<String>,
     val review: Review,
-    val attributes: List<ItemDetail.Item.Attribute>
+    val attributes: List<Attribute>
 ) {
+
+    @Parcelize
+    data class Review(
+        val ratingAverage: Float,
+        val levels: Level,
+        val reviews: List<Item>
+    ): Parcelable {
+
+        @Parcelize
+        data class Item(
+            val title: String,
+            val content: String,
+            val rate: Int,
+            val valorization: Int,
+            val likes: Int,
+            val dislikes: Int,
+            val revelance: Int
+        ): Parcelable
+
+        @Parcelize
+        data class Level(
+            val oneStar: Int,
+            val twoStar: Int,
+            val threeStar: Int,
+            val fourStar: Int,
+            val fiveStar: Int
+        ): Parcelable
+
+        fun reviewsAmountLabel() = "(${reviews.size})"
+
+        fun hasReviews(): Boolean = reviews.isNotEmpty()
+
+        fun ratingAverageLabel() = "${ratingAverage}"
+    }
+
+    @Parcelize
+    data class Attribute(val name: String, val valueName: String) : Parcelable
+
+    fun reviewsAmountLabel() = review.reviewsAmountLabel()
+
+    fun reviewsTitleLabel() = "${dictionary.getString(REVIEWS_ABOUT)} $title"
+
+    fun hasReviews(): Boolean = review.hasReviews()
+
+    fun hasAttributes(): Boolean = attributes.isNotEmpty()
+
+    fun priceLabel(): String = price.toPrettifiedPrice()
+
+    fun originalPrice(): String = originalPrice.toPrettifiedPrice()
+
+    private fun hasZeroPrice(price: Double) = price == 0.0
+
+    fun originalPriceIsZero() = hasZeroPrice(originalPrice)
+
+    fun shippingGuaranteedLabel(): String = if (hasShippingGuaranteed)
+        dictionary.getString(GUARANTEED_SHIPPING) else EMPTY_STRING
 
     fun headerTitle(): String {
         if (condition().isNotEmpty() && hasReviews())
@@ -40,32 +96,13 @@ data class ItemDetail(
         }
     }
 
-    fun ratingAverageLabel() = "${review.ratingAverage}"
+    fun ratingAverageLabel() = review.ratingAverageLabel()
 
     fun averageLabel(): String {
-        val algo =  "${dictionary.getString(AVERAGE_BETWEEN)} ${review.reviews.size} ${dictionary.getString(
+        return "${dictionary.getString(AVERAGE_BETWEEN)} ${review.reviews.size} ${dictionary.getString(
             REVIEWS_LABEL)}"
-        return algo
     }
 
-    fun reviewsAmountLabel() = "(${review.reviews.size})"
-
-    fun reviewsTitleLabel() = "${dictionary.getString(REVIEWS_ABOUT)} $title"
-
-    fun hasReviews(): Boolean = review.reviews.isNotEmpty()
-
-    fun hasAttributes(): Boolean = attributes.isNotEmpty()
-
-    fun priceLabel(): String = price.toPrettifiedPrice()
-
-    fun originalPrice(): String = originalPrice.toPrettifiedPrice()
-
-    private fun hasZeroPrice(price: Double) = price == 0.0
-
-    fun originalPriceIsZero() = hasZeroPrice(originalPrice)
-
-    fun shippingGuaranteedLabel(): String = if (hasShippingGuaranteed)
-        dictionary.getString(GUARANTEED_SHIPPING) else EMPTY_STRING
 
     companion object{
         private const val EMPTY_STRING = ""

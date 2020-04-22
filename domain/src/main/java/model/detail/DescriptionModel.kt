@@ -1,6 +1,6 @@
 package model.detail
 
-data class Description(
+data class DescriptionModel(
     val text: String,
     val plainText: String
 )

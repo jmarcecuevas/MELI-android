@@ -8,11 +8,6 @@ fun hideIfFalse(view: View, value: Boolean) {
     view.visibility = if (value) View.VISIBLE else View.GONE
 }
 
-@BindingAdapter("hideAlways")
-fun hideAlways(view: View, value: Boolean) {
-    view.visibility = View.GONE
-}
-
 @BindingAdapter("hideIfZero")
 fun hideIfZero(view: View, number: Int) {
     view.visibility = if (number == 0) View.GONE else View.VISIBLE

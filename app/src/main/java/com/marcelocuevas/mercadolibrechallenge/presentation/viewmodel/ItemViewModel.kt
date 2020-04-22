@@ -7,41 +7,41 @@ import androidx.lifecycle.viewModelScope
 import com.marcelocuevas.usecases.GetItemDetail
 import kotlinx.coroutines.launch
 import model.Result
-import model.detail.ItemDetail
+import model.detail.ItemDetailModel
 import model.dictionary.Dictionary
-import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetail as ItemDetailUIModel
+import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel as ItemDetailUIModel
 
 class ItemViewModel(
     private val getItemDetail: GetItemDetail,
     private val dictionary: Dictionary,
-    private val mapItemDetailDomain: (ItemDetail, Dictionary) -> (ItemDetailUIModel)
+    private val mapItemDetailDomain: (ItemDetailModel, Dictionary) -> (ItemDetailUIModel)
 ): ViewModel() {
 
-    private val errorMessage = MutableLiveData<String>()
-    private val item = MutableLiveData<ItemDetailUIModel>()
-    private val isLoading = MutableLiveData<Boolean>()
+    private val _errorMessage = MutableLiveData<String>()
+    private val _item = MutableLiveData<ItemDetailUIModel>()
+    private val _isLoading = MutableLiveData<Boolean>()
 
-    val itemLiveData: LiveData<ItemDetailUIModel>
-        get() = item
+    val item: LiveData<ItemDetailUIModel>
+        get() = _item
 
-    val errorMessageLiveData: LiveData<String>
-        get() = errorMessage
+    val errorMessage: LiveData<String>
+        get() = _errorMessage
 
-    val isLoadingLiveData: LiveData<Boolean>
-        get() = isLoading
+    val loading: LiveData<Boolean>
+        get() = _isLoading
 
 
     fun itemDetail(id: String) {
-        isLoading.value = true
+        _isLoading.value = true
         viewModelScope.launch {
             when (val value = getItemDetail(id)) {
                 is Result.Success -> {
-                    isLoading.postValue(false)
-                    item.postValue(mapItemDetailDomain(value.data,dictionary))
+                    _isLoading.postValue(false)
+                    _item.postValue(mapItemDetailDomain(value.data,dictionary))
                 }
                 is Result.Error -> {
-                    isLoading.postValue(false)
-                    errorMessage.postValue(value.message.message)
+                    _isLoading.postValue(false)
+                    _errorMessage.postValue(value.message.message)
                 }
             }
         }

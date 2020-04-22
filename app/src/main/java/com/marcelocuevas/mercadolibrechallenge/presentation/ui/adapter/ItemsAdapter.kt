@@ -32,7 +32,6 @@ class ItemsAdapter(val onClick: (String) -> Unit): RecyclerView.Adapter<ItemsAda
 
     override fun getItemCount() = items.size
 
-
     inner class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView) {
 
         fun bind(item: ItemUIModel) {

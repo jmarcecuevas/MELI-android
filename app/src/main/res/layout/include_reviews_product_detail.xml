@@ -19,7 +19,7 @@
             app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
             android:layout_marginTop="@dimen/xLargeDimen"
             android:background="@color/gray10"
-            hideIfFalse="@{viewModel.itemLiveData.hasReviews() &amp;&amp; !viewModel.isLoadingLiveData().booleanValue()}"
+            hideIfFalse="@{viewModel.item.hasReviews() &amp;&amp; !viewModel.loading.booleanValue()}"
             tools:visibility="visible">
         </View>
 
@@ -33,8 +33,8 @@
             android:layout_marginTop="@dimen/xLargeDimen"
             android:fontFamily="@font/lato"
             android:textSize="20sp"
-            hideIfFalse="@{viewModel.itemLiveData.hasReviews()}"
-            android:text="@{viewModel.itemLiveData.reviewsTitleLabel()}"
+            hideIfFalse="@{viewModel.item.hasReviews()}"
+            android:text="@{viewModel.item.reviewsTitleLabel()}"
             tools:text="Opiniones sobre Kanji Home KJH-BL1000HB01">
         </TextView>
 
@@ -46,8 +46,8 @@
             android:layout_marginTop="@dimen/xLargeDimen"
             android:textSize="48sp"
             android:fontFamily="@font/lato"
-            hideIfFalse="@{viewModel.itemLiveData.hasReviews()}"
-            android:text="@{viewModel.itemLiveData.ratingAverageLabel()}"
+            hideIfFalse="@{viewModel.item.hasReviews()}"
+            android:text="@{viewModel.item.ratingAverageLabel()}"
             tools:text="4.5">
         </TextView>
 
@@ -62,7 +62,7 @@
             android:layout_marginStart="@dimen/largeDimen"
             android:layout_marginEnd="@dimen/mediumDimen"
             android:orientation="vertical"
-            hideIfFalse="@{viewModel.itemLiveData.hasReviews()}"
+            hideIfFalse="@{viewModel.item.hasReviews()}"
             tools:visibility="visible">
 
             <RatingBar
@@ -73,7 +73,7 @@
                 android:theme="@style/RatingBar"
                 android:numStars="5"
                 android:stepSize="1"
-                android:rating="@{viewModel.itemLiveData.review.ratingAverage}"
+                android:rating="@{viewModel.item.review.ratingAverage}"
                 tools:rating="4" />
 
             <TextView
@@ -81,7 +81,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato"
                 android:textColor="@color/textLight"
-                android:text="@{viewModel.itemLiveData.averageLabel()}"
+                android:text="@{viewModel.item.averageLabel()}"
                 tools:text="Promedio entre 176 opiniones">
             </TextView>
 
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/reviewsAverageContainer"
             android:layout_marginTop="17dp"
-            hideIfFalse="@{viewModel.itemLiveData.hasReviews()}"
+            hideIfFalse="@{viewModel.item.hasReviews()}"
             tools:itemCount="3"
             tools:listitem="@layout/view_review_item">
         </androidx.recyclerview.widget.RecyclerView>
@@ -111,7 +111,7 @@
             android:background="@drawable/bg_gray_rounded"
             android:textAlignment="textStart"
             android:drawableEnd="@drawable/ic_navigation_next"
-            hideIfFalse="@{viewModel.itemLiveData.hasReviews() &amp;&amp; viewModel.itemLiveData.review.reviews.size() > 3}"
+            hideIfFalse="@{viewModel.item.hasReviews() &amp;&amp; viewModel.item.review.reviews.size() > 3}"
             android:text="@string/product_detail_see_all_reviews">
         </Button>
 

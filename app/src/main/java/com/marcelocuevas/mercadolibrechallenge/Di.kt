@@ -27,15 +27,15 @@ import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewMo
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.SearchViewModel
 import com.marcelocuevas.usecases.GetItemDetail
 import com.marcelocuevas.usecases.SearchProducts
-import model.Item
-import model.detail.Description
-import model.detail.ItemDetail
-import model.detail.Review
+import model.ItemModel
+import model.detail.DescriptionModel
+import model.detail.ItemDetailModel
+import model.detail.ReviewModel
 import model.dictionary.Dictionary
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 import repository.ItemRepository
-import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetail as ItemDetailUIModel
+import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel as ItemDetailUIModel
 
 val dataModule = module {
     single<SearchRepository> { SearchRepositoryImpl(get(), makeItemDataMapper()) }
@@ -68,26 +68,26 @@ val appModule = module {
     factory { ItemViewModel(get(), get(), makeItemDetailDomainMapper()) }
 }
 
-private fun makeItemDetailDomainMapper(): (ItemDetail, Dictionary) -> ItemDetailUIModel = { itemDetail, dic ->
+private fun makeItemDetailDomainMapper(): (ItemDetailModel, Dictionary) -> ItemDetailUIModel = { itemDetail, dic ->
     mapItemDetailDomain(itemDetail, dic)
 }
 
-private fun makeItemDomainMapper(): (Item, Dictionary) -> ItemUIModel = { itemDomain, dic ->
+private fun makeItemDomainMapper(): (ItemModel, Dictionary) -> ItemUIModel = { itemDomain, dic ->
     mapItemDomain(itemDomain,dic)
 }
 
-private fun makeItemDataMapper(): (ItemResponse) -> Item = { itemDto ->
+private fun makeItemDataMapper(): (ItemResponse) -> ItemModel = { itemDto ->
     mapItemDto(itemDto)
 }
 
-private fun makeItemDetailDataMapper(): (ItemDetailResponse) -> ItemDetail.Item = { itemDetailDto ->
+private fun makeItemDetailDataMapper(): (ItemDetailResponse) -> ItemDetailModel.ItemModel = { itemDetailDto ->
     mapItemDetailDto(itemDetailDto)
 }
 
-private fun makeDescriptionDataMapper(): (DescriptionsResponse) -> Description = { descriptionDto ->
+private fun makeDescriptionDataMapper(): (DescriptionsResponse) -> DescriptionModel = { descriptionDto ->
     mapDescriptionDto(descriptionDto)
 }
 
-private fun makeReviewDataMapper(): (ReviewsResponse) -> Review = { reviewDto ->
+private fun makeReviewDataMapper(): (ReviewsResponse) -> ReviewModel = { reviewDto ->
     mapReviewDto(reviewDto)
 }

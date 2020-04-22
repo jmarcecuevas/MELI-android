@@ -6,7 +6,7 @@
     <data>
         <variable
             name="attribute"
-            type="model.detail.ItemDetail.Item.Attribute" />
+            type="com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel.Attribute" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

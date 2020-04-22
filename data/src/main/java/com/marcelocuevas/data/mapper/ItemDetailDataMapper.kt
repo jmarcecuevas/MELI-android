@@ -3,10 +3,10 @@ package com.marcelocuevas.data.mapper
 import com.marcelocuevas.data.model.AttributeResponse
 import com.marcelocuevas.data.model.ItemDetailResponse
 import com.marcelocuevas.data.model.PictureResponse
-import model.detail.ItemDetail
+import model.detail.ItemDetailModel
 
-fun mapItemDetailDto(input: ItemDetailResponse): ItemDetail.Item {
-    return ItemDetail.Item(
+fun mapItemDetailDto(input: ItemDetailResponse): ItemDetailModel.ItemModel {
+    return ItemDetailModel.ItemModel(
         input.id.orEmpty(),
         input.title.orEmpty(),
         input.subtitle.orEmpty(),
@@ -29,15 +29,15 @@ fun mapItemDetailDto(input: ItemDetailResponse): ItemDetail.Item {
     )
 }
 
-fun mapPictureDto(input: PictureResponse): ItemDetail.Item.Picture {
-    return ItemDetail.Item.Picture(
+fun mapPictureDto(input: PictureResponse): ItemDetailModel.ItemModel.Picture {
+    return ItemDetailModel.ItemModel.Picture(
         input.url.orEmpty(),
         input.size.orEmpty()
     )
 }
 
-fun mapAttributeDto(input: AttributeResponse): ItemDetail.Item.Attribute {
-    return ItemDetail.Item.Attribute(
+fun mapAttributeDto(input: AttributeResponse): ItemDetailModel.ItemModel.Attribute {
+    return ItemDetailModel.ItemModel.Attribute(
         input.name.orEmpty(),
         input.valueName.orEmpty()
     )

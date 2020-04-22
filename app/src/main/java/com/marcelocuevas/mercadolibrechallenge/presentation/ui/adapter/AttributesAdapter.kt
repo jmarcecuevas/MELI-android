@@ -8,17 +8,18 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.marcelocuevas.mercadolibrechallenge.R
 import com.marcelocuevas.mercadolibrechallenge.databinding.ViewAttributeItemBinding
-import model.detail.ItemDetail
-
+import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel
 
 class AttributesAdapter(
     val context: Context?,
-    val items: List<ItemDetail.Item.Attribute>
+    private val items: List<ItemDetailUIModel.Attribute>
 ) : RecyclerView.Adapter<AttributesAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val inflater = context?.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
-        val binding = DataBindingUtil.inflate<ViewAttributeItemBinding>(inflater, R.layout.view_attribute_item, parent, false)
+        val inflater = context?.getSystemService(
+                                    Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val binding = DataBindingUtil.
+            inflate<ViewAttributeItemBinding>(inflater, R.layout.view_attribute_item, parent, false)
         return ViewHolder(binding)
     }
 
@@ -30,17 +31,20 @@ class AttributesAdapter(
 
     inner class ViewHolder(private val binding: ViewAttributeItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(item: ItemDetail.Item.Attribute) {
-            if (position % 2 == 0) {
-                binding.valueNameTextView.setBackgroundColor(getColor(R.color.gray10))
-                binding.valueTextView.setBackgroundColor(getColor(R.color.gray00))
-            } else {
-                binding.valueNameTextView.setBackgroundColor(getColor(R.color.gray00))
-                binding.valueTextView.setBackgroundColor(getColor(R.color.white))
-            }
-
-            binding.attribute = item
+        fun bind(itemUIModel: ItemDetailUIModel.Attribute) {
+            if (adapterPosition % 2 == 0) paintDarkGroup() else paintLightGroup()
+            binding.attribute = itemUIModel
             binding.executePendingBindings()
+        }
+
+        private fun paintDarkGroup() {
+            binding.valueNameTextView.setBackgroundColor(getColor(R.color.gray10))
+            binding.valueTextView.setBackgroundColor(getColor(R.color.gray00))
+        }
+
+        private fun paintLightGroup() {
+            binding.valueNameTextView.setBackgroundColor(getColor(R.color.gray00))
+            binding.valueTextView.setBackgroundColor(getColor(R.color.white))
         }
 
         private fun getColor(resID: Int): Int {

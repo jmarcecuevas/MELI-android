@@ -1,15 +1,15 @@
 package repository
 
-import model.detail.Description
+import model.detail.DescriptionModel
 import model.Result
-import model.detail.ItemDetail
-import model.detail.Review
+import model.detail.ItemDetailModel
+import model.detail.ReviewModel
 
 interface ItemRepository {
 
-    suspend fun itemDetail(id: String): Result<ItemDetail.Item>
+    suspend fun itemDetail(id: String): Result<ItemDetailModel.ItemModel>
 
-    suspend fun descriptionForItem(id: String): Result<Description>
+    suspend fun descriptionForItem(id: String): Result<DescriptionModel>
 
-    suspend fun reviewsForItem(id: String): Result<Review>
+    suspend fun reviewsForItem(id: String): Result<ReviewModel>
 }

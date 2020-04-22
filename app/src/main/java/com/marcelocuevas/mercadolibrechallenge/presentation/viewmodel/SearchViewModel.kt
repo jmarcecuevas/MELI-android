@@ -8,40 +8,40 @@ import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemUIModel
 import model.Result
 import com.marcelocuevas.usecases.SearchProducts
 import kotlinx.coroutines.launch
-import model.Item
+import model.ItemModel
 import model.dictionary.Dictionary
 
 class SearchViewModel(
     private val searchProducts: SearchProducts,
     private val dictionary: Dictionary,
-    private val mapItemDomain: (Item,Dictionary) -> (ItemUIModel)
+    private val mapItemDomain: (ItemModel, Dictionary) -> (ItemUIModel)
 ): ViewModel() {
 
-    private val errorMessage = MutableLiveData<String>()
-    private val products = MutableLiveData<List<ItemUIModel>>()
-    private val isLoading = MutableLiveData<Boolean>()
+    private val _errorMessage = MutableLiveData<String>()
+    private val _items = MutableLiveData<List<ItemUIModel>>()
+    private val _loading = MutableLiveData<Boolean>()
 
-    val productsLiveData: LiveData<List<ItemUIModel>>
-        get() = products
+    val items: LiveData<List<ItemUIModel>>
+        get() = _items
 
     val errorMessageLiveData: LiveData<String>
-        get() = errorMessage
+        get() = _errorMessage
 
     val isLoadingLiveData: LiveData<Boolean>
-        get() = isLoading
+        get() = _loading
 
     fun search(query: String) {
-        isLoading.value = true
+        _loading.value = true
         viewModelScope.launch {
             when (val value = searchProducts(query)) {
                 is Result.Success -> {
-                    isLoading.postValue(false)
-                    products.postValue(value.data.map { mapItemDomain(it,dictionary) })
+                    _loading.postValue(false)
+                    _items.postValue(value.data.map { mapItemDomain(it,dictionary) })
                 }
 
                 is Result.Error -> {
-                    isLoading.postValue(false)
-                    errorMessage.postValue(value.message.message)
+                    _loading.postValue(false)
+                    _errorMessage.postValue(value.message.message)
                 }
             }
         }

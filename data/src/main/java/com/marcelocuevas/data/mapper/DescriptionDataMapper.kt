@@ -1,10 +1,10 @@
 package com.marcelocuevas.data.mapper
 
 import com.marcelocuevas.data.model.DescriptionsResponse
-import model.detail.Description
+import model.detail.DescriptionModel
 
-fun mapDescriptionDto(input: DescriptionsResponse): Description {
-    return Description(
+fun mapDescriptionDto(input: DescriptionsResponse): DescriptionModel {
+    return DescriptionModel(
         input.text.orEmpty(),
         input.plainText.orEmpty()
     )

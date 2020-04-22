@@ -1,6 +1,6 @@
 package model
 
-data class Item(
+data class ItemModel(
     val id: String,
     val title: String,
     val imageURL: String,

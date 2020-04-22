@@ -1,13 +1,15 @@
 package model.detail
 
+import model.ItemModel
 
-data class ItemDetail(
-    val item: Item,
-    val description: Description,
-    val review: Review
+
+data class ItemDetailModel(
+    val item: ItemModel,
+    val description: DescriptionModel,
+    val review: ReviewModel
 ){
 
-    data class Item(
+    data class ItemModel(
         val id: String,
         val title: String,
         val subtitle: String,
@@ -16,7 +18,7 @@ data class ItemDetail(
         val soldQuantity: Int,
         val condition: String,
         val thumbnail: String,
-        val shipping: model.Item.Shipping,
+        val shipping: model.ItemModel.Shipping,
         val pictures: List<Picture>,
         val warranty: String,
         val attributes: List<Attribute>,

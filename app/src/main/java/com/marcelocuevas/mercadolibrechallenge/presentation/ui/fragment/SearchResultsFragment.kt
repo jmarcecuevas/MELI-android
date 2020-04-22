@@ -9,7 +9,7 @@ import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.SearchView
 import kotlinx.android.synthetic.main.fragment_search_results.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class SearchResultsFragment: GenericFragment() {
+class SearchResultsFragment: BaseFragment() {
 
     private val viewModel by viewModel<SearchViewModel>()
     private val adapter = ItemsAdapter() {
@@ -37,7 +37,7 @@ class SearchResultsFragment: GenericFragment() {
     }
 
     private fun startObserving() {
-        viewModel.productsLiveData.observe(this, Observer {
+        viewModel.items.observe(this, Observer {
             adapter.loadItems(it)
         })
 

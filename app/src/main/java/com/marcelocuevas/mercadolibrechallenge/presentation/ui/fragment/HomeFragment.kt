@@ -4,7 +4,7 @@ import androidx.navigation.fragment.findNavController
 import com.marcelocuevas.mercadolibrechallenge.R
 import kotlinx.android.synthetic.main.fragment_home.*
 
-class HomeFragment: GenericFragment() {
+class HomeFragment: BaseFragment() {
 
     override fun layoutRes() = R.layout.fragment_home
 

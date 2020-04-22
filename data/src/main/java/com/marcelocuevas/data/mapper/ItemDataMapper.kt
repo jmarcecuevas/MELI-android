@@ -3,10 +3,10 @@ package com.marcelocuevas.data.mapper
 import com.marcelocuevas.data.model.ItemResponse
 import com.marcelocuevas.data.model.SellerResponse
 import com.marcelocuevas.data.model.ShippingResponse
-import model.Item
+import model.ItemModel
 
-fun mapItemDto(input: ItemResponse): Item {
-    return Item(
+fun mapItemDto(input: ItemResponse): ItemModel {
+    return ItemModel(
         input.id.orEmpty(),
         input.title.orEmpty(),
         input.thumbnail.orEmpty(),
@@ -20,16 +20,16 @@ fun mapItemDto(input: ItemResponse): Item {
     )
 }
 
-fun mapShippingDto(input: ShippingResponse?): Item.Shipping {
-    return Item.Shipping(
+fun mapShippingDto(input: ShippingResponse?): ItemModel.Shipping {
+    return ItemModel.Shipping(
         input?.freeShipping.orFalse(),
         input?.logisticType.orEmpty(),
         input?.storePickUp.orFalse()
     )
 }
 
-fun mapSellerDto(input: SellerResponse?): Item.Seller {
-    return Item.Seller(
+fun mapSellerDto(input: SellerResponse?): ItemModel.Seller {
+    return ItemModel.Seller(
         input?.eshop?.nickName.orEmpty()
     )
 }

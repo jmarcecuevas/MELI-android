@@ -1,5 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">MercadoLibreChallenge</string>
+    <string name="rating_average_between">Promedio entre %d opiniones</string>
     <string name="serch_query_hint">Buscar en Mercado Libre</string>
     <string name="product_detail_see_all_reviews">Ver todas las opiniones</string>
     <string name="product_detail_see_all_attributes">Ver más características</string>

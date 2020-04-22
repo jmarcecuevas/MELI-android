@@ -1,13 +1,13 @@
 package com.marcelocuevas.usecases
 
 import model.Result
-import model.detail.ItemDetail
+import model.detail.ItemDetailModel
 import repository.ItemRepository
 import java.io.IOException
 
 class GetItemDetail(private val itemRepository: ItemRepository) {
 
-    suspend operator fun invoke(id: String): Result<ItemDetail> {
+    suspend operator fun invoke(id: String): Result<ItemDetailModel> {
         val item = itemRepository.itemDetail(id)
         val reviews = itemRepository.reviewsForItem(id)
         val description =itemRepository.descriptionForItem(id)
@@ -15,7 +15,7 @@ class GetItemDetail(private val itemRepository: ItemRepository) {
         if (item is Result.Success && reviews is Result.Success
             && description is Result.Success) {
             return Result.Success(
-                ItemDetail(
+                ItemDetailModel(
                 item.data, description.data, reviews.data))
         }
         return Result.Error(IOException(""))

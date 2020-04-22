@@ -1,13 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+        <variable
+            name="review"
+            type="com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel.Review" />
 
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/colorPrimary" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/reviewsAverageTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:paddingStart="@dimen/largeDimen"
+                    android:layout_marginTop="@dimen/xLargeDimen"
+                    android:textSize="48sp"
+                    android:fontFamily="@font/lato"
+                    android:text="@{String.valueOf(review.ratingAverage)}"
+                    tools:text="4.5"
+                    tools:ignore="MissingConstraints,RtlSymmetry">
+                </TextView>
+
+                <LinearLayout
+                    android:id="@+id/reviewsAverageContainer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toTopOf="@+id/reviewsAverageTextView"
+                    app:layout_constraintBottom_toBottomOf="@+id/reviewsAverageTextView"
+                    app:layout_constraintStart_toEndOf="@+id/reviewsAverageTextView"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="@dimen/largeDimen"
+                    android:layout_marginEnd="@dimen/mediumDimen"
+                    android:orientation="vertical"
+                    tools:visibility="visible">
+
+                    <RatingBar
+                        android:id="@+id/starsRatingBar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="?android:attr/ratingBarStyleIndicator"
+                        android:theme="@style/RatingBar"
+                        android:numStars="5"
+                        android:stepSize="1"
+                        android:rating="@{review.ratingAverage}"
+                        tools:rating="4" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/lato"
+                        android:textColor="@color/textLight"
+                        android:text="@{@string/rating_average_between(review.reviews.size())}"
+                        tools:text="Promedio entre 176 opiniones">
+                    </TextView>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/reviewsRecyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/largeDimen"
+                    app:layout_constraintTop_toBottomOf="@+id/reviewsAverageContainer"
+                    tools:itemCount="3"
+                    tools:listitem="@layout/view_review_item">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
 </layout>

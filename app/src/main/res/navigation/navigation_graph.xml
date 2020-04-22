@@ -42,18 +42,26 @@
             android:name="id"
             app:argType="string" />
         <action
-            android:id="@+id/action_product_detail_fragment_to_attributesFragment"
-            app:destination="@id/attributesFragment" />
-        <action
-            android:id="@+id/action_product_detail_fragment_to_reviewsFragment"
+            android:id="@+id/to_reviews_fragment"
             app:destination="@id/reviewsFragment" />
+        <action
+            android:id="@+id/to_attributes_fragment"
+            app:destination="@id/attributesFragment" />
     </fragment>
     <fragment
         android:id="@+id/reviewsFragment"
         android:name="com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment.ReviewsFragment"
-        android:label="@string/fragment_reviews_title" />
+        android:label="@string/fragment_reviews_title" >
+        <argument
+            android:name="review"
+            app:argType="com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel$Review" />
+    </fragment>
     <fragment
         android:id="@+id/attributesFragment"
         android:name="com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment.AttributesFragment"
-        android:label="@string/fragment_attributes_title" />
+        android:label="@string/fragment_attributes_title">
+        <argument
+            android:name="attributesList"
+            app:argType="com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel$Attribute[]" />
+    </fragment>
 </navigation>

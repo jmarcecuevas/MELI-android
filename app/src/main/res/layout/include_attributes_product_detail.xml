@@ -19,7 +19,7 @@
             app:layout_constraintTop_toBottomOf="@+id/addToCartButton"
             android:layout_marginTop="@dimen/xLargeDimen"
             android:background="@color/gray10"
-            hideIfFalse="@{!viewModel.isLoadingLiveData().booleanValue()}">
+            hideIfFalse="@{!viewModel.loading.booleanValue()}">
         </View>
 
         <TextView
@@ -32,7 +32,7 @@
             android:fontFamily="@font/lato"
             android:textSize="18sp"
             android:text="@string/product_detail_features_title"
-            hideIfFalse="@{!viewModel.isLoadingLiveData().booleanValue() &amp;&amp; viewModel.itemLiveData.hasAttributes()}"
+            hideIfFalse="@{!viewModel.loading.booleanValue() &amp;&amp; viewModel.item.hasAttributes()}"
             android:visibility="visible">
         </TextView>
 
@@ -60,7 +60,7 @@
             android:background="@drawable/bg_gray_rounded"
             android:textAlignment="textStart"
             android:drawableEnd="@drawable/ic_navigation_next"
-            hideIfFalse="@{viewModel.itemLiveData.hasAttributes() &amp;&amp; viewModel.itemLiveData.attributes.size() > 5}"
+            hideIfFalse="@{viewModel.item.hasAttributes() &amp;&amp; viewModel.item.attributes.size() > 5}"
             android:text="@string/product_detail_see_all_attributes">
         </Button>
 

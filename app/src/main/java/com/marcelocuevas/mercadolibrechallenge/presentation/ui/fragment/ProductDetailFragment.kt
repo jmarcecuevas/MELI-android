@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.marcelocuevas.mercadolibrechallenge.R
 import com.marcelocuevas.mercadolibrechallenge.databinding.FragmentProductDetailBinding
+import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.AttributesAdapter
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.ReviewsAdapter
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.SliderAdapter
@@ -15,8 +16,6 @@ import kotlinx.android.synthetic.main.fragment_product_detail.*
 import kotlinx.android.synthetic.main.fragment_product_detail.toolbar
 import kotlinx.android.synthetic.main.include_attributes_product_detail.*
 import kotlinx.android.synthetic.main.include_reviews_product_detail.*
-import model.detail.ItemDetail
-import model.detail.Review
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -31,8 +30,18 @@ class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>()
 
     override fun init() {
         setupNav(toolbar)
+
         setupBinding()
         viewModel.itemDetail(id)
+
+        showAllAttrsButton.setOnClickListener {
+            navigateToAttrsFragment()
+        }
+
+        showAllReviewsButton.setOnClickListener {
+            navigateToReviewsFragment()
+        }
+
         startObserving()
     }
 
@@ -42,17 +51,17 @@ class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>()
     }
 
     private fun startObserving() {
-        viewModel.itemLiveData.observe(this, Observer {
+        viewModel.item.observe(this, Observer {
             showPictures(it.pictures.toMutableList())
             showAttributes(it.attributes)
             showReviews(it.review.reviews)
         })
 
-        viewModel.errorMessageLiveData.observe(this, Observer {
+        viewModel.errorMessage.observe(this, Observer {
 
         })
 
-        viewModel.isLoadingLiveData.observe(this, Observer {
+        viewModel.loading.observe(this, Observer {
             //progressBar.shouldShow(it)
         })
     }
@@ -72,13 +81,30 @@ class ProductDetailFragment: DataBindingFragment<FragmentProductDetailBinding>()
         picturesSlider.create(adapter, lifecycle = lifecycle)
     }
 
-    private fun showAttributes(attributes: List<ItemDetail.Item.Attribute>) {
+    private fun showAttributes(attributes: List<ItemDetailUIModel.Attribute>) {
         attributesRecyclerView.layoutManager = LinearLayoutManager(context)
         attributesRecyclerView.adapter = AttributesAdapter(context, attributes.take(5))
     }
 
-    private fun showReviews(reviews: List<Review.Item>) {
+    private fun showReviews(reviews: List<ItemDetailUIModel.Review.Item>) {
         reviewsRecyclerView.layoutManager = LinearLayoutManager(context)
         reviewsRecyclerView.adapter = ReviewsAdapter(context, reviews.take(3))
+    }
+
+    private fun navigateToAttrsFragment() {
+        val attributes = viewModel.item.value?.attributes?.toTypedArray()
+        attributes?.let {
+            val directions = ProductDetailFragmentDirections.
+            toAttributesFragment(it)
+            navigateTo(directions) }
+    }
+
+    private fun navigateToReviewsFragment() {
+        val review = viewModel.item.value?.review
+        review?.let {
+            val directions = ProductDetailFragmentDirections.
+                toReviewsFragment(it)
+            navigateTo(directions)
+        }
     }
 }
