@@ -20,7 +20,7 @@
             app:layout_constraintTop_toBottomOf="@+id/showAllAttrsButton"
             android:layout_marginTop="@dimen/xLargeDimen"
             android:background="@color/gray10"
-            hideIfFalse="@{!viewModel.item.description.empty &amp;&amp; !viewModel.loading.booleanValue()}">
+            hideIfFalse="@{!viewModel.item.description.empty}">
         </View>
 
         <TextView
@@ -34,7 +34,7 @@
             android:fontFamily="@font/lato"
             android:textSize="20sp"
             android:text="@string/product_detail_description_title"
-            hideIfFalse="@{!viewModel.item.description.empty &amp;&amp; !viewModel.loading.booleanValue()}"
+            hideIfFalse="@{!viewModel.item.description.empty}"
             tools:text="Descripción">
         </TextView>
 

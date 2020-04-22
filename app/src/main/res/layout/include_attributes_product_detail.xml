@@ -18,8 +18,7 @@
             android:layout_height="1dp"
             app:layout_constraintTop_toBottomOf="@+id/addToCartButton"
             android:layout_marginTop="@dimen/xLargeDimen"
-            android:background="@color/gray10"
-            hideIfFalse="@{!viewModel.loading.booleanValue()}">
+            android:background="@color/gray10">
         </View>
 
         <TextView
@@ -32,7 +31,7 @@
             android:fontFamily="@font/lato"
             android:textSize="18sp"
             android:text="@string/product_detail_features_title"
-            hideIfFalse="@{!viewModel.loading.booleanValue() &amp;&amp; viewModel.item.hasAttributes()}"
+            hideIfFalse="@{viewModel.item.hasAttributes()}"
             android:visibility="visible">
         </TextView>
 

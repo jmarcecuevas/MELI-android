@@ -19,7 +19,7 @@
             app:layout_constraintTop_toBottomOf="@+id/descriptionTextView"
             android:layout_marginTop="@dimen/xLargeDimen"
             android:background="@color/gray10"
-            hideIfFalse="@{viewModel.item.hasReviews() &amp;&amp; !viewModel.loading.booleanValue()}"
+            hideIfFalse="@{viewModel.item.hasReviews()}"
             tools:visibility="visible">
         </View>
 

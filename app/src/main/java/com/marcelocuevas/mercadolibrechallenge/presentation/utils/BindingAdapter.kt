@@ -13,6 +13,11 @@ fun hideIfZero(view: View, number: Int) {
     view.visibility = if (number == 0) View.GONE else View.VISIBLE
 }
 
+@BindingAdapter("hide")
+fun hide(view: View, value: Boolean) {
+    view.visibility = if (value) View.GONE else View.VISIBLE
+}
+
 @BindingAdapter("hideIfZero")
 fun hideIfZero(view: View, number: Float) {
     view.visibility = if (number == 0f) View.GONE else View.VISIBLE

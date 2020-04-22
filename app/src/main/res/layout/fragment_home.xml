@@ -14,12 +14,12 @@
         <com.marcelocuevas.mercadolibrechallenge.presentation.utils.TouchInterceptorLayout
             android:id="@+id/searchViewContainer"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/searchViewDimen"
             android:layout_marginEnd="@dimen/largeDimen">
 
             <androidx.appcompat.widget.SearchView
                 android:layout_width="match_parent"
-                android:layout_height="40dp"
+                android:layout_height="@dimen/searchViewDimen"
                 android:id="@+id/searchView"
                 app:iconifiedByDefault="false"
                 app:queryHint="@string/serch_query_hint"

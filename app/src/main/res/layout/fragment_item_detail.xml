@@ -9,12 +9,11 @@
             name="viewModel"
             type="com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewModel">
         </variable>
-
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:orientation="vertical"
         android:background="@color/white">
 
@@ -27,6 +26,9 @@
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/toolbar"
+            hide="@{viewModel.loading || viewModel.error}"
+            android:visibility="gone"
             app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -35,21 +37,9 @@
                 android:background="@color/white"
                 android:padding="@dimen/largeDimen">
 
-                <androidx.core.widget.ContentLoadingProgressBar
-                    android:id="@+id/progressBar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    style="?android:attr/progressBarStyleLarge"
-                    android:layout_gravity="center">
-                </androidx.core.widget.ContentLoadingProgressBar>
-
                 <include
-                    bind:viewModel="@{viewModel}"
-                    layout="@layout/include_header_product_detail">
+                    layout="@layout/include_header_product_detail"
+                    bind:viewModel="@{viewModel}">
                 </include>
 
                 <com.opensooq.pluto.PlutoView
@@ -91,5 +81,23 @@
 
         </androidx.core.widget.NestedScrollView>
 
-    </LinearLayout>
+        <com.marcelocuevas.mercadolibrechallenge.presentation.ui.custom.ErrorView
+            android:id="@+id/errorView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone">
+        </com.marcelocuevas.mercadolibrechallenge.presentation.ui.custom.ErrorView>
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_gravity="center"
+            android:visibility="gone">
+        </androidx.core.widget.ContentLoadingProgressBar>
+
+    </RelativeLayout>
 </layout>

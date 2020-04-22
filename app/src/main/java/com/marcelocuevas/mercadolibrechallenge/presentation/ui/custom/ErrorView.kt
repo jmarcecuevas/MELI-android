@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.include_network_error.view.*
 
 class ErrorView: FrameLayout {
 
-    lateinit var onClick: () -> Unit
+    var onClick: (() -> Unit)? = null
 
     constructor(context: Context) : super(context)
 
@@ -22,7 +22,7 @@ class ErrorView: FrameLayout {
     init {
         LayoutInflater.from(context).inflate(R.layout.include_network_error, this)
         retryButton.setOnClickListener {
-            onClick()
+            onClick?.let { it() }
         }
     }
 

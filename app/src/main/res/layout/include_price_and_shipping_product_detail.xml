@@ -121,7 +121,7 @@
             android:textSize="16sp"
             android:textColor="@color/colorAccent"
             android:text="@{viewModel.item.warranty}"
-            hideIfFalse="@{!viewModel.item.warranty.empty &amp;&amp; !viewModel.loading.booleanValue()}"
+            hideIfFalse="@{!viewModel.item.warranty.empty}"
             tools:text="12 meses de garantía">
         </TextView>
 
@@ -139,7 +139,6 @@
             android:textAllCaps="false"
             android:background="@drawable/bg_accent_rounded"
             android:text="@string/buy_label"
-            hideIfFalse="@{!viewModel.loading.booleanValue()}"
             tools:visibility="visible"
             tools:text="Comprar ahora">
         </Button>
@@ -158,7 +157,6 @@
             android:textAllCaps="false"
             android:background="@drawable/bg_transparent_rounded"
             android:text="@string/add_to_cart_label"
-            hideIfFalse="@{!viewModel.loading.booleanValue()}"
             tools:visibility="visible"
             tools:text="Agregar al carrito">
         </Button>
