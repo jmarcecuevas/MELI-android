@@ -118,7 +118,7 @@
             android:drawableStart="@drawable/ic_warrantly"
             android:drawablePadding="@dimen/mediumDimen"
             android:fontFamily="@font/lato_light"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textColor="@color/colorAccent"
             android:text="@{viewModel.item.warranty}"
             hideIfFalse="@{!viewModel.item.warranty.empty &amp;&amp; !viewModel.loading.booleanValue()}"

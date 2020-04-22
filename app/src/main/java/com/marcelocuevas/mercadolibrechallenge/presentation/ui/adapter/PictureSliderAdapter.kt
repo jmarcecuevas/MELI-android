@@ -8,8 +8,8 @@ import com.opensooq.pluto.base.PlutoAdapter
 import com.opensooq.pluto.base.PlutoViewHolder
 import com.opensooq.pluto.listeners.OnItemClickListener
 
-class SliderAdapter(items: MutableList<String>, onItemClickListener: OnItemClickListener<String>) :
-    PlutoAdapter<String, SliderAdapter.ViewHolder>(items, onItemClickListener) {
+class PictureSliderAdapter(items: MutableList<String>, onItemClickListener: OnItemClickListener<String>) :
+    PlutoAdapter<String, PictureSliderAdapter.ViewHolder>(items, onItemClickListener) {
 
     override fun getViewHolder(parent: ViewGroup, viewType: Int) =
         ViewHolder(parent, R.layout.item_picture_slide)

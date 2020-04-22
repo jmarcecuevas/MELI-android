@@ -7,7 +7,7 @@ import com.marcelocuevas.mercadolibrechallenge.databinding.FragmentItemDetailBin
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.AttributesAdapter
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.ReviewsAdapter
-import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.SliderAdapter
+import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.PictureSliderAdapter
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.shouldShow
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewModel
 import com.opensooq.pluto.base.PlutoAdapter
@@ -68,7 +68,7 @@ class ItemDetailFragment: DataBindingFragment<FragmentItemDetailBinding>() {
     }
 
     private fun showPictures(pictures: MutableList<String>) {
-        val adapter = SliderAdapter(pictures, object : OnItemClickListener<String> {
+        val adapter = PictureSliderAdapter(pictures, object : OnItemClickListener<String> {
             override fun onItemClicked(item: String?, position: Int) {
 
             }
