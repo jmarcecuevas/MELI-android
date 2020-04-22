@@ -45,6 +45,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:auto_cycle="false"
+                    app:indicator_visibility="true"
                     android:layout_marginTop="@dimen/largeDimen"
                     app:layout_constraintTop_toBottomOf="@+id/starsRatingBar"
                     app:layout_constraintStart_toStartOf="parent"

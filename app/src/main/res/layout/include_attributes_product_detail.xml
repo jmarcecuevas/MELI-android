@@ -19,7 +19,7 @@
             app:layout_constraintTop_toBottomOf="@+id/addToCartButton"
             android:layout_marginTop="@dimen/xLargeDimen"
             android:background="@color/gray10"
-            tools:visibility="visible">
+            hideIfFalse="@{!viewModel.isLoadingLiveData().booleanValue()}">
         </View>
 
         <TextView
