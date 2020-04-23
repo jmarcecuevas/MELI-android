@@ -33,7 +33,9 @@ class SearchFragment: BaseFragment() {
 
     private fun setupRecyclerView() {
         recordsRecyclerView.layoutManager = LinearLayoutManager(context)
-        adapter = RecordsAdapter()
+        adapter = RecordsAdapter {
+            navigateToSearchResults(it)
+        }
         recordsRecyclerView.adapter = adapter
     }
 

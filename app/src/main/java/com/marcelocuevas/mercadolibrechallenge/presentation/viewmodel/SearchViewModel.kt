@@ -24,7 +24,7 @@ class SearchViewModel(
     }
 
     private fun getAllSearches() =
-        viewModelScope.launch { _searches.postValue(getSearches()) }
+        viewModelScope.launch { _searches.postValue(getSearches().reversed()) }
 
 
     fun searchButtonClicked(query: String) =

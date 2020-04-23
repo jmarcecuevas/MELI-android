@@ -8,7 +8,7 @@ import com.marcelocuevas.mercadolibrechallenge.R
 import kotlinx.android.synthetic.main.view_record_item.view.*
 import model.SearchModel
 
-class RecordsAdapter: RecyclerView.Adapter<RecordsAdapter.RecordViewHolder>() {
+class RecordsAdapter(val onClick: (String) -> Unit): RecyclerView.Adapter<RecordsAdapter.RecordViewHolder>() {
 
     private var items: List<SearchModel> = emptyList()
 
@@ -23,8 +23,13 @@ class RecordsAdapter: RecyclerView.Adapter<RecordsAdapter.RecordViewHolder>() {
         return RecordViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecordViewHolder, position: Int) =
+    override fun onBindViewHolder(holder: RecordViewHolder, position: Int) {
         holder.bind(items[position])
+
+        holder.itemView.setOnClickListener {
+            onClick(items[position].query)
+        }
+    }
 
     override fun getItemCount(): Int {
         return items.size
