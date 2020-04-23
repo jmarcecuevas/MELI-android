@@ -1,6 +1,7 @@
 package com.marcelocuevas.mercadolibrechallenge
 
 import com.marcelocuevas.data.datasource.ItemDataSource
+import com.marcelocuevas.data.datasource.LocalSearchDataSource
 import com.marcelocuevas.data.datasource.SearchDataSource
 import com.marcelocuevas.data.mapper.mapDescriptionDto
 import com.marcelocuevas.data.mapper.mapItemDetailDto
@@ -21,11 +22,15 @@ import com.marcelocuevas.mercadolibrechallenge.framework.network.ConnectivityInt
 import com.marcelocuevas.mercadolibrechallenge.framework.datasource.NetworkSearchDataSource
 import com.marcelocuevas.mercadolibrechallenge.presentation.mapper.mapItemDomain
 import com.marcelocuevas.mercadolibrechallenge.framework.AndroidDictionary
+import com.marcelocuevas.mercadolibrechallenge.framework.datasource.RoomSearchDataSource
 import com.marcelocuevas.mercadolibrechallenge.presentation.mapper.mapItemDetailDomain
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemUIModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewModel
+import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.SearchResultsViewModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.SearchViewModel
 import com.marcelocuevas.usecases.GetItemDetail
+import com.marcelocuevas.usecases.GetSearches
+import com.marcelocuevas.usecases.SaveSearch
 import com.marcelocuevas.usecases.SearchProducts
 import model.ItemModel
 import model.detail.DescriptionModel
@@ -38,16 +43,20 @@ import repository.ItemRepository
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel as ItemDetailUIModel
 
 val dataModule = module {
-    single<SearchRepository> { SearchRepositoryImpl(get(), makeItemDataMapper()) }
+    //Repositories
+    single<SearchRepository> { SearchRepositoryImpl(get(), get(), makeItemDataMapper()) }
     single<ItemRepository> {   ItemRepositoryImpl(get(),
                                 makeItemDetailDataMapper(),
                                 makeDescriptionDataMapper(),
                                 makeReviewDataMapper()) }
+
 }
 
 val useCaseModule = module {
     factory { SearchProducts(get()) }
     factory { GetItemDetail(get()) }
+    factory { SaveSearch(get()) }
+    factory { GetSearches(get()) }
 }
 
 val appModule = module {
@@ -55,17 +64,17 @@ val appModule = module {
     single { SearchAPI.invoke(get()) }
     single { ItemAPI.invoke(get()) }
 
+    //Datasources
     single<SearchDataSource> { NetworkSearchDataSource(get()) }
     single<ItemDataSource> { NetworkItemDataSource(get())  }
+    single<LocalSearchDataSource> { RoomSearchDataSource(androidContext()) }
 
-    single<Dictionary> {
-        AndroidDictionary(
-            androidContext()
-        )
-    }
+    single<Dictionary> { AndroidDictionary(androidContext()) }
 
-    factory { SearchViewModel(get(), get(), makeItemDomainMapper()) }
+    //ViewModels
+    factory { SearchResultsViewModel(get(), get(), makeItemDomainMapper()) }
     factory { ItemViewModel(get(), get(), makeItemDetailDomainMapper()) }
+    factory { SearchViewModel(get(), get()) }
 }
 
 private fun makeItemDetailDomainMapper(): (ItemDetailModel, Dictionary) -> ItemDetailUIModel = { itemDetail, dic ->

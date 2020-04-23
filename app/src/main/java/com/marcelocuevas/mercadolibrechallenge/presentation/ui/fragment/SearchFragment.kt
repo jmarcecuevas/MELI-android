@@ -1,18 +1,33 @@
 package com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment
 
+import android.util.Log
 import androidx.appcompat.widget.SearchView
+import androidx.lifecycle.Observer
 import com.marcelocuevas.mercadolibrechallenge.R
+import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchFragment: BaseFragment() {
+
+    private val viewModel by viewModel<SearchViewModel>()
 
     override fun layoutRes() = R.layout.fragment_search
 
     override fun init() {
         setupNav(toolbar)
 
+        viewModel.onStart()
+
+        startObserving()
         setupSearchView()
         setupSearchViewListener()
+    }
+
+    private fun startObserving() {
+        viewModel.searches.observe(this, Observer {
+
+        })
     }
 
     private fun setupSearchView() {
@@ -28,6 +43,7 @@ class SearchFragment: BaseFragment() {
             }
 
             override fun onQueryTextSubmit(query: String): Boolean {
+                viewModel.searchButtonClicked(query)
                 navigateToSearchResults(query)
                 return true
             }

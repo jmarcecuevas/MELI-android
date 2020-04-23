@@ -4,59 +4,29 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemUIModel
-import model.Result
-import com.marcelocuevas.usecases.SearchProducts
+import com.marcelocuevas.usecases.GetSearches
+import com.marcelocuevas.usecases.SaveSearch
 import kotlinx.coroutines.launch
-import model.ItemModel
-import model.dictionary.Dictionary
+import model.SearchModel
 
 class SearchViewModel(
-    private val searchProducts: SearchProducts,
-    private val dictionary: Dictionary,
-    private val mapItemDomain: (ItemModel, Dictionary) -> (ItemUIModel)
+    private val saveSearch: SaveSearch,
+    private val getSearches: GetSearches
 ): ViewModel() {
 
-    private val _error = MutableLiveData<Boolean>()
-    private val _items = MutableLiveData<List<ItemUIModel>>()
-    private val _loading = MutableLiveData<Boolean>()
+    private val _searches = MutableLiveData<List<SearchModel>>()
 
-    private var queryToSearch: String = ""
+    val searches: LiveData<List<SearchModel>>
+        get() = _searches
 
-    val items: LiveData<List<ItemUIModel>>
-        get() = _items
-
-    val hasError: LiveData<Boolean>
-        get() = _error
-
-    val loading: LiveData<Boolean>
-        get() = _loading
-
-    fun onStart(query: String) {
-        queryToSearch = query
-        search()
+    fun onStart() {
+        getAllSearches()
     }
 
-    fun retryClicked() {
-        search()
-    }
+    private fun getAllSearches() =
+        viewModelScope.launch { _searches.postValue(getSearches()) }
 
-    private fun search() {
-        _error.value = false
-        _loading.value = true
-        viewModelScope.launch {
-            when (val value = searchProducts(queryToSearch)) {
-                is Result.Success -> {
-                    _loading.postValue(false)
-                    _error.postValue(false)
-                    _items.postValue(value.data.map { mapItemDomain(it,dictionary) })
-                }
 
-                is Result.Error -> {
-                    _loading.postValue(false)
-                    _error.postValue(true)
-                }
-            }
-        }
-    }
+    fun searchButtonClicked(query: String) =
+        viewModelScope.launch { saveSearch(query) }
 }

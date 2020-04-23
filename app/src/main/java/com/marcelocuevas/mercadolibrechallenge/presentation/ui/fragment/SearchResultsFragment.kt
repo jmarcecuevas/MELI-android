@@ -6,13 +6,13 @@ import com.marcelocuevas.mercadolibrechallenge.R
 import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.ItemsAdapter
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.shouldShow
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.visibleOrGone
-import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.SearchViewModel
+import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.SearchResultsViewModel
 import kotlinx.android.synthetic.main.fragment_search_results.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SearchResultsFragment: BaseFragment() {
 
-    private val viewModel by viewModel<SearchViewModel>()
+    private val viewModel by viewModel<SearchResultsViewModel>()
     private val adapter = ItemsAdapter() {
         navigateToDetail(it)
     }
