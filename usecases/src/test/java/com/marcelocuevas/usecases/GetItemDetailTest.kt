@@ -2,14 +2,14 @@ package com.marcelocuevas.usecases
 
 import com.nhaarman.mockitokotlin2.*
 import kotlinx.coroutines.runBlocking
-import model.Result
-import model.detail.DescriptionModel
-import model.detail.ItemDetailModel
-import model.detail.ReviewModel
+import com.marcelocuevas.domain.model.Result
+import com.marcelocuevas.domain.model.detail.DescriptionModel
+import com.marcelocuevas.domain.model.detail.ItemDetailModel
+import com.marcelocuevas.domain.model.detail.ReviewModel
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
-import repository.ItemRepository
+import com.marcelocuevas.domain.repository.ItemRepository
 
 class GetItemDetailTest {
 

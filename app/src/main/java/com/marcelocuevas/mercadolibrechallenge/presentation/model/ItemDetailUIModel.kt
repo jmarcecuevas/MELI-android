@@ -3,7 +3,7 @@ package com.marcelocuevas.mercadolibrechallenge.presentation.model
 import android.os.Parcelable
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.toPrettifiedPrice
 import kotlinx.android.parcel.Parcelize
-import model.dictionary.Dictionary
+import com.marcelocuevas.domain.model.dictionary.Dictionary
 
 data class ItemDetailUIModel(
     val dictionary: Dictionary,

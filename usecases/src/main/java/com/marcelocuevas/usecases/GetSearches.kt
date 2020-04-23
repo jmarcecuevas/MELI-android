@@ -1,6 +1,6 @@
 package com.marcelocuevas.usecases
 
-import repository.SearchRepository
+import com.marcelocuevas.domain.repository.SearchRepository
 
 class GetSearches(private val repository: SearchRepository) {
 

@@ -3,7 +3,7 @@ package com.marcelocuevas.data.mapper
 import com.marcelocuevas.data.model.ItemResponse
 import com.marcelocuevas.data.model.SellerResponse
 import com.marcelocuevas.data.model.ShippingResponse
-import model.ItemModel
+import com.marcelocuevas.domain.model.ItemModel
 
 fun mapItemDto(input: ItemResponse): ItemModel {
     return ItemModel(

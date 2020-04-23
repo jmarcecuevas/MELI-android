@@ -1,4 +1,4 @@
-package model.detail
+package com.marcelocuevas.domain.model.detail
 
 data class ReviewModel(
     val ratingAverage: Float,

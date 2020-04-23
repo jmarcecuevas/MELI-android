@@ -4,7 +4,7 @@ import com.nhaarman.mockitokotlin2.*
 import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
-import repository.SearchRepository
+import com.marcelocuevas.domain.repository.SearchRepository
 
 class GetSearchesTest {
 

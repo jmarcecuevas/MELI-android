@@ -10,11 +10,11 @@ import com.marcelocuevas.data.model.ItemResponse
 import com.marcelocuevas.data.model.ReviewsResponse
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemUIModel
-import model.ItemModel
-import model.detail.DescriptionModel
-import model.detail.ItemDetailModel
-import model.detail.ReviewModel
-import model.dictionary.Dictionary
+import com.marcelocuevas.domain.model.ItemModel
+import com.marcelocuevas.domain.model.detail.DescriptionModel
+import com.marcelocuevas.domain.model.detail.ItemDetailModel
+import com.marcelocuevas.domain.model.detail.ReviewModel
+import com.marcelocuevas.domain.model.dictionary.Dictionary
 
 fun makeItemDetailDomainMapper(): (ItemDetailModel, Dictionary) -> ItemDetailUIModel = { itemDetail, dic ->
     mapItemDetailDomain(itemDetail, dic)

@@ -1,8 +1,7 @@
 package com.marcelocuevas.data.datasource
 
 import com.marcelocuevas.data.model.ItemResponse
-import model.Result
-import model.SearchModel
+import com.marcelocuevas.domain.model.Result
 
 interface SearchDataSource {
 

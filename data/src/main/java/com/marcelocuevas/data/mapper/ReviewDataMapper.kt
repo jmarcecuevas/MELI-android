@@ -3,7 +3,7 @@ package com.marcelocuevas.data.mapper
 import com.marcelocuevas.data.model.RatingLevelsResponse
 import com.marcelocuevas.data.model.ReviewItemResponse
 import com.marcelocuevas.data.model.ReviewsResponse
-import model.detail.ReviewModel
+import com.marcelocuevas.domain.model.detail.ReviewModel
 
 fun mapReviewDto(input: ReviewsResponse): ReviewModel {
     return ReviewModel(

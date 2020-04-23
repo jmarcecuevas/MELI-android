@@ -1,8 +1,8 @@
 package com.marcelocuevas.usecases
 
-import model.Result
-import model.detail.ItemDetailModel
-import repository.ItemRepository
+import com.marcelocuevas.domain.model.Result
+import com.marcelocuevas.domain.model.detail.ItemDetailModel
+import com.marcelocuevas.domain.repository.ItemRepository
 import java.io.IOException
 
 class GetItemDetail(private val itemRepository: ItemRepository) {

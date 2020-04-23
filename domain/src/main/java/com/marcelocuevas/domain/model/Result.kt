@@ -1,4 +1,4 @@
-package model
+package com.marcelocuevas.domain.model
 
 import java.io.IOException
 

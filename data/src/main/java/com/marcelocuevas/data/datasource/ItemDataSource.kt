@@ -3,7 +3,7 @@ package com.marcelocuevas.data.datasource
 import com.marcelocuevas.data.model.DescriptionsResponse
 import com.marcelocuevas.data.model.ItemDetailResponse
 import com.marcelocuevas.data.model.ReviewsResponse
-import model.Result
+import com.marcelocuevas.domain.model.Result
 
 interface ItemDataSource {
 

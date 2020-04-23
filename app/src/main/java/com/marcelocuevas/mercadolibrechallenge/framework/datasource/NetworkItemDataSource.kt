@@ -6,7 +6,7 @@ import com.marcelocuevas.data.model.ItemDetailResponse
 import com.marcelocuevas.data.model.ReviewsResponse
 import com.marcelocuevas.mercadolibrechallenge.framework.api.ItemAPI
 import com.marcelocuevas.mercadolibrechallenge.framework.network.NoConnectivityException
-import model.Result
+import com.marcelocuevas.domain.model.Result
 import timber.log.Timber
 import java.io.IOException
 

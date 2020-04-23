@@ -2,7 +2,7 @@ package com.marcelocuevas.mercadolibrechallenge.framework.datasource
 
 import com.marcelocuevas.data.datasource.SearchDataSource
 import com.marcelocuevas.data.model.ItemResponse
-import model.Result
+import com.marcelocuevas.domain.model.Result
 import com.marcelocuevas.mercadolibrechallenge.framework.api.SearchAPI
 import com.marcelocuevas.mercadolibrechallenge.framework.network.NoConnectivityException
 import timber.log.Timber

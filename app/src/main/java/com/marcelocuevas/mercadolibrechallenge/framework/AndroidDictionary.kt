@@ -1,7 +1,7 @@
 package com.marcelocuevas.mercadolibrechallenge.framework
 
 import android.content.Context
-import model.dictionary.Dictionary
+import com.marcelocuevas.domain.model.dictionary.Dictionary
 import timber.log.Timber
 
 class AndroidDictionary(private val context: Context): Dictionary {

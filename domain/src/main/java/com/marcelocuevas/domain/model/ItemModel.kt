@@ -1,4 +1,4 @@
-package model
+package com.marcelocuevas.domain.model
 
 data class ItemModel(
     val id: String,

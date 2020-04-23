@@ -1,6 +1,4 @@
-package model.detail
-
-import model.ItemModel
+package com.marcelocuevas.domain.model.detail
 
 
 data class ItemDetailModel(
@@ -18,7 +16,7 @@ data class ItemDetailModel(
         val soldQuantity: Int,
         val condition: String,
         val thumbnail: String,
-        val shipping: model.ItemModel.Shipping,
+        val shipping: com.marcelocuevas.domain.model.ItemModel.Shipping,
         val pictures: List<Picture>,
         val warranty: String,
         val attributes: List<Attribute>,

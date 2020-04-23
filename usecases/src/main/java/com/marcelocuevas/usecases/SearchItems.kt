@@ -1,8 +1,8 @@
 package com.marcelocuevas.usecases
 
-import model.ItemModel
-import repository.SearchRepository
-import model.Result
+import com.marcelocuevas.domain.model.ItemModel
+import com.marcelocuevas.domain.repository.SearchRepository
+import com.marcelocuevas.domain.model.Result
 
 class SearchItems(private val repository: SearchRepository) {
 

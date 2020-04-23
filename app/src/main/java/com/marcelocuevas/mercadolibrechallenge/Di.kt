@@ -4,7 +4,7 @@ import com.marcelocuevas.data.datasource.ItemDataSource
 import com.marcelocuevas.data.datasource.LocalSearchDataSource
 import com.marcelocuevas.data.datasource.SearchDataSource
 import com.marcelocuevas.data.repository.ItemRepositoryImpl
-import repository.SearchRepository
+import com.marcelocuevas.domain.repository.SearchRepository
 import com.marcelocuevas.data.repository.SearchRepositoryImpl
 import com.marcelocuevas.mercadolibrechallenge.framework.datasource.NetworkItemDataSource
 import com.marcelocuevas.mercadolibrechallenge.framework.datasource.NetworkSearchDataSource
@@ -20,10 +20,10 @@ import com.marcelocuevas.usecases.GetItemDetail
 import com.marcelocuevas.usecases.GetSearches
 import com.marcelocuevas.usecases.SaveSearch
 import com.marcelocuevas.usecases.SearchItems
-import model.dictionary.Dictionary
+import com.marcelocuevas.domain.model.dictionary.Dictionary
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
-import repository.ItemRepository
+import com.marcelocuevas.domain.repository.ItemRepository
 
 val dataModule = module {
     //Repositories

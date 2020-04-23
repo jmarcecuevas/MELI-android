@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.marcelocuevas.mercadolibrechallenge.R
 import kotlinx.android.synthetic.main.view_record_item.view.*
-import model.SearchModel
+import com.marcelocuevas.domain.model.SearchModel
 import timber.log.Timber
 
 class RecordsAdapter(val onClick: (String) -> Unit): RecyclerView.Adapter<RecordsAdapter.RecordViewHolder>() {

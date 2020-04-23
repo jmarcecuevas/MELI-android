@@ -3,10 +3,10 @@ package com.marcelocuevas.data.repository
 import com.marcelocuevas.data.datasource.LocalSearchDataSource
 import com.marcelocuevas.data.datasource.SearchDataSource
 import com.marcelocuevas.data.model.ItemResponse
-import model.ItemModel
-import model.Result
-import model.SearchModel
-import repository.SearchRepository
+import com.marcelocuevas.domain.model.ItemModel
+import com.marcelocuevas.domain.model.Result
+import com.marcelocuevas.domain.model.SearchModel
+import com.marcelocuevas.domain.repository.SearchRepository
 
 class SearchRepositoryImpl (
     private val apiDataSource: SearchDataSource,

@@ -6,9 +6,9 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.marcelocuevas.usecases.GetItemDetail
 import kotlinx.coroutines.launch
-import model.Result
-import model.detail.ItemDetailModel
-import model.dictionary.Dictionary
+import com.marcelocuevas.domain.model.Result
+import com.marcelocuevas.domain.model.detail.ItemDetailModel
+import com.marcelocuevas.domain.model.dictionary.Dictionary
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel as ItemDetailUIModel
 
 class ItemViewModel(

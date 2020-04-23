@@ -3,7 +3,7 @@ package com.marcelocuevas.data.mapper
 import com.marcelocuevas.data.model.AttributeResponse
 import com.marcelocuevas.data.model.ItemDetailResponse
 import com.marcelocuevas.data.model.PictureResponse
-import model.detail.ItemDetailModel
+import com.marcelocuevas.domain.model.detail.ItemDetailModel
 
 fun mapItemDetailDto(input: ItemDetailResponse): ItemDetailModel.ItemModel {
     return ItemDetailModel.ItemModel(

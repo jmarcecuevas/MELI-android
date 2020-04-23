@@ -1,7 +1,7 @@
 package com.marcelocuevas.data.mapper
 
 import com.marcelocuevas.data.model.DescriptionsResponse
-import model.detail.DescriptionModel
+import com.marcelocuevas.domain.model.detail.DescriptionModel
 
 fun mapDescriptionDto(input: DescriptionsResponse): DescriptionModel {
     return DescriptionModel(

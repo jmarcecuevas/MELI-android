@@ -1,8 +1,8 @@
 package com.marcelocuevas.mercadolibrechallenge.presentation.mapper
 
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemUIModel
-import model.ItemModel
-import model.dictionary.Dictionary
+import com.marcelocuevas.domain.model.ItemModel
+import com.marcelocuevas.domain.model.dictionary.Dictionary
 
 fun mapItemDomain(input: ItemModel, dictionary: Dictionary): ItemUIModel {
     return ItemUIModel(

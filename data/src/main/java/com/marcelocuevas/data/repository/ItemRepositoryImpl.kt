@@ -4,11 +4,11 @@ import com.marcelocuevas.data.datasource.ItemDataSource
 import com.marcelocuevas.data.model.DescriptionsResponse
 import com.marcelocuevas.data.model.ItemDetailResponse
 import com.marcelocuevas.data.model.ReviewsResponse
-import model.Result
-import model.detail.DescriptionModel
-import model.detail.ItemDetailModel
-import model.detail.ReviewModel
-import repository.ItemRepository
+import com.marcelocuevas.domain.model.Result
+import com.marcelocuevas.domain.model.detail.DescriptionModel
+import com.marcelocuevas.domain.model.detail.ItemDetailModel
+import com.marcelocuevas.domain.model.detail.ReviewModel
+import com.marcelocuevas.domain.repository.ItemRepository
 
 class ItemRepositoryImpl(
     private val itemDataSource: ItemDataSource,

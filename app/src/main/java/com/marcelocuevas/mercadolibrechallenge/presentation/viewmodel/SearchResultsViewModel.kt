@@ -5,11 +5,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemUIModel
-import model.Result
+import com.marcelocuevas.domain.model.Result
 import com.marcelocuevas.usecases.SearchItems
 import kotlinx.coroutines.launch
-import model.ItemModel
-import model.dictionary.Dictionary
+import com.marcelocuevas.domain.model.ItemModel
+import com.marcelocuevas.domain.model.dictionary.Dictionary
 
 class SearchResultsViewModel(
     private val searchProducts: SearchItems,

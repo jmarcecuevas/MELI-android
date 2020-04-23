@@ -1,4 +1,4 @@
-package model.dictionary
+package com.marcelocuevas.domain.model.dictionary
 
 interface Dictionary {
 

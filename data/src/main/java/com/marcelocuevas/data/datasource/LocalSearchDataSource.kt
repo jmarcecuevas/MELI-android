@@ -1,6 +1,6 @@
 package com.marcelocuevas.data.datasource
 
-import model.SearchModel
+import com.marcelocuevas.domain.model.SearchModel
 
 interface LocalSearchDataSource {
 

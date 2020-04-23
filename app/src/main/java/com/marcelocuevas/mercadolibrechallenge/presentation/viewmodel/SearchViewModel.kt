@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.marcelocuevas.usecases.GetSearches
 import com.marcelocuevas.usecases.SaveSearch
 import kotlinx.coroutines.launch
-import model.SearchModel
+import com.marcelocuevas.domain.model.SearchModel
 
 class SearchViewModel(
     private val saveSearch: SaveSearch,

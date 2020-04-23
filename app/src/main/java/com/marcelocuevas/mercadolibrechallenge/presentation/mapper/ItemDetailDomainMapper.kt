@@ -1,13 +1,13 @@
 package com.marcelocuevas.mercadolibrechallenge.presentation.mapper
 
-import model.detail.ItemDetailModel
-import model.detail.ReviewModel
+import com.marcelocuevas.domain.model.detail.ItemDetailModel
+import com.marcelocuevas.domain.model.detail.ReviewModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel as ItemDetailUIModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel.Attribute as AttributeUIModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel.Review as ReviewUIModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel.Review.Level as LevelUIModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel.Review.Item as ItemReviewUIModel
-import model.dictionary.Dictionary
+import com.marcelocuevas.domain.model.dictionary.Dictionary
 
 fun mapItemDetailDomain(input: ItemDetailModel, dictionary: Dictionary): ItemDetailUIModel {
     return ItemDetailUIModel(

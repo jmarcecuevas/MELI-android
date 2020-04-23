@@ -1,8 +1,8 @@
-package repository
+package com.marcelocuevas.domain.repository
 
-import model.ItemModel
-import model.Result
-import model.SearchModel
+import com.marcelocuevas.domain.model.ItemModel
+import com.marcelocuevas.domain.model.Result
+import com.marcelocuevas.domain.model.SearchModel
 
 interface SearchRepository {
 

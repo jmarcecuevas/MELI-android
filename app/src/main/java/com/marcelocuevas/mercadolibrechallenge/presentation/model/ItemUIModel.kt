@@ -1,7 +1,7 @@
 package com.marcelocuevas.mercadolibrechallenge.presentation.model
 
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.toPrettifiedPrice
-import model.dictionary.Dictionary
+import com.marcelocuevas.domain.model.dictionary.Dictionary
 
 data class ItemUIModel(
     private val dictionary: Dictionary,
