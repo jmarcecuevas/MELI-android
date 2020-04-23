@@ -17,13 +17,13 @@ import com.marcelocuevas.data.repository.SearchRepositoryImpl
 import com.marcelocuevas.mercadolibrechallenge.framework.api.ItemAPI
 import com.marcelocuevas.mercadolibrechallenge.framework.api.SearchAPI
 import com.marcelocuevas.mercadolibrechallenge.framework.datasource.NetworkItemDataSource
-import com.marcelocuevas.mercadolibrechallenge.framework.network.ConnectivityInterceptor
-import com.marcelocuevas.mercadolibrechallenge.framework.network.ConnectivityInterceptorImpl
 import com.marcelocuevas.mercadolibrechallenge.framework.datasource.NetworkSearchDataSource
-import com.marcelocuevas.mercadolibrechallenge.presentation.mapper.mapItemDomain
 import com.marcelocuevas.mercadolibrechallenge.framework.AndroidDictionary
 import com.marcelocuevas.mercadolibrechallenge.framework.datasource.RoomSearchDataSource
-import com.marcelocuevas.mercadolibrechallenge.presentation.mapper.mapItemDetailDomain
+import com.marcelocuevas.mercadolibrechallenge.framework.datasource.db.LocalDatabase
+import com.marcelocuevas.mercadolibrechallenge.framework.datasource.db.SearchDao
+import com.marcelocuevas.mercadolibrechallenge.framework.network.*
+import com.marcelocuevas.mercadolibrechallenge.presentation.mapper.*
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemUIModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewModel
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.SearchResultsViewModel
@@ -49,7 +49,6 @@ val dataModule = module {
                                 makeItemDetailDataMapper(),
                                 makeDescriptionDataMapper(),
                                 makeReviewDataMapper()) }
-
 }
 
 val useCaseModule = module {
@@ -61,13 +60,16 @@ val useCaseModule = module {
 
 val appModule = module {
     single<ConnectivityInterceptor> { ConnectivityInterceptorImpl(get())}
-    single { SearchAPI.invoke(get()) }
-    single { ItemAPI.invoke(get()) }
+
+    single { makeSearchAPI(get()) }
+    single { makeItemAPI(get()) }
+
+    single { LocalDatabase.getInstance(androidContext()).searchDAO()}
 
     //Datasources
     single<SearchDataSource> { NetworkSearchDataSource(get()) }
     single<ItemDataSource> { NetworkItemDataSource(get())  }
-    single<LocalSearchDataSource> { RoomSearchDataSource(androidContext()) }
+    single<LocalSearchDataSource> { RoomSearchDataSource(androidContext(), get()) }
 
     single<Dictionary> { AndroidDictionary(androidContext()) }
 
@@ -77,26 +79,3 @@ val appModule = module {
     factory { SearchViewModel(get(), get()) }
 }
 
-private fun makeItemDetailDomainMapper(): (ItemDetailModel, Dictionary) -> ItemDetailUIModel = { itemDetail, dic ->
-    mapItemDetailDomain(itemDetail, dic)
-}
-
-private fun makeItemDomainMapper(): (ItemModel, Dictionary) -> ItemUIModel = { itemDomain, dic ->
-    mapItemDomain(itemDomain,dic)
-}
-
-private fun makeItemDataMapper(): (ItemResponse) -> ItemModel = { itemDto ->
-    mapItemDto(itemDto)
-}
-
-private fun makeItemDetailDataMapper(): (ItemDetailResponse) -> ItemDetailModel.ItemModel = { itemDetailDto ->
-    mapItemDetailDto(itemDetailDto)
-}
-
-private fun makeDescriptionDataMapper(): (DescriptionsResponse) -> DescriptionModel = { descriptionDto ->
-    mapDescriptionDto(descriptionDto)
-}
-
-private fun makeReviewDataMapper(): (ReviewsResponse) -> ReviewModel = { reviewDto ->
-    mapReviewDto(reviewDto)
-}

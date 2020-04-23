@@ -3,9 +3,7 @@ package com.marcelocuevas.mercadolibrechallenge.presentation.ui.custom
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.FrameLayout
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.marcelocuevas.mercadolibrechallenge.R
 import kotlinx.android.synthetic.main.include_network_error.view.*
 
