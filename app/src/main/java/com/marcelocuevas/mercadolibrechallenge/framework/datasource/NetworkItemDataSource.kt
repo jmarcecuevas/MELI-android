@@ -7,6 +7,7 @@ import com.marcelocuevas.data.model.ReviewsResponse
 import com.marcelocuevas.mercadolibrechallenge.framework.api.ItemAPI
 import com.marcelocuevas.mercadolibrechallenge.framework.network.NoConnectivityException
 import model.Result
+import timber.log.Timber
 import java.io.IOException
 
 class NetworkItemDataSource(private val itemAPI: ItemAPI):
@@ -18,6 +19,7 @@ class NetworkItemDataSource(private val itemAPI: ItemAPI):
             if (response.isSuccessful) {
                 response.body()?.let { return Result.Success(it) }
             }
+            Timber.w("An error ocurred in itemDetail")
             return Result.Error(IOException("An error ocurred"))
         } catch (e: NoConnectivityException) {
             return Result.Error(IOException(e.message))
@@ -31,6 +33,7 @@ class NetworkItemDataSource(private val itemAPI: ItemAPI):
                 response.body()?.let {
                     if (it.isNotEmpty()) return Result.Success(it[0]) }
             }
+            Timber.w("An error ocurred in itemDescriptions")
             return Result.Error(IOException("An error ocurred"))
         } catch (e: NoConnectivityException) {
             return Result.Error(IOException(e.message))
@@ -43,6 +46,7 @@ class NetworkItemDataSource(private val itemAPI: ItemAPI):
             if (response.isSuccessful) {
                 response.body()?.let { return Result.Success(it) }
             }
+            Timber.w("An error ocurred in itemReviews")
             return Result.Error(IOException("An error ocurred"))
         } catch (e: NoConnectivityException) {
             return Result.Error(IOException(e.message))

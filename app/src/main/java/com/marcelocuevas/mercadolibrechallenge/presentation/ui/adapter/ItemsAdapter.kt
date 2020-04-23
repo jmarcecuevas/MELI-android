@@ -10,6 +10,7 @@ import com.marcelocuevas.mercadolibrechallenge.R
 import com.marcelocuevas.mercadolibrechallenge.databinding.ViewProductItemBinding
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemUIModel
 import kotlinx.android.synthetic.main.view_product_item.view.*
+import timber.log.Timber
 
 class ItemsAdapter(val onClick: (String) -> Unit): RecyclerView.Adapter<ItemsAdapter.ViewHolder>() {
 
@@ -30,6 +31,7 @@ class ItemsAdapter(val onClick: (String) -> Unit): RecyclerView.Adapter<ItemsAda
         holder.bind(items[position])
 
         holder.itemView.setOnClickListener {
+            Timber.d("Item in position $position clicked")
             onClick(items[position].id)
         }
     }

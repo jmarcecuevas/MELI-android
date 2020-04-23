@@ -2,12 +2,17 @@ package com.marcelocuevas.mercadolibrechallenge.framework
 
 import android.content.Context
 import model.dictionary.Dictionary
+import timber.log.Timber
 
 class AndroidDictionary(private val context: Context): Dictionary {
 
     override fun getString(id: String): String {
         val resID = getResourceID(id)
-        return if (resID > 0) context.getString(resID) else ""
+        return if (resID > 0) context.getString(resID)
+        else {
+            Timber.w("String not found: ${id}")
+            return ""
+        }
     }
 
     private fun getResourceID(variableName: String): Int {

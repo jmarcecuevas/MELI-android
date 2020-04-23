@@ -78,15 +78,7 @@ class ItemDetailFragment: DataBindingFragment<FragmentItemDetailBinding>() {
 
     private fun showPictures(pictures: MutableList<String>) {
         val adapter = PictureSliderAdapter(pictures, object : OnItemClickListener<String> {
-            override fun onItemClicked(item: String?, position: Int) {
-
-            }
-        })
-
-        picturesSlider.setOnSlideChangeListener(object : OnSlideChangeListener {
-            override fun onSlideChange(adapter: PlutoAdapter<*, *>, position: Int) {
-
-            }
+            override fun onItemClicked(item: String?, position: Int) {}
         })
         picturesSlider.create(adapter, lifecycle = lifecycle)
     }

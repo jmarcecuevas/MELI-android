@@ -52,7 +52,6 @@ class SearchFragment: BaseFragment() {
 
     private fun setupSearchViewListener() {
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-
             override fun onQueryTextChange(newText: String): Boolean {
                 return false
             }

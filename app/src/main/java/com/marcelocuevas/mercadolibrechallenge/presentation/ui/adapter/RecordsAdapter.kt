@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.marcelocuevas.mercadolibrechallenge.R
 import kotlinx.android.synthetic.main.view_record_item.view.*
 import model.SearchModel
+import timber.log.Timber
 
 class RecordsAdapter(val onClick: (String) -> Unit): RecyclerView.Adapter<RecordsAdapter.RecordViewHolder>() {
 
@@ -27,6 +28,7 @@ class RecordsAdapter(val onClick: (String) -> Unit): RecyclerView.Adapter<Record
         holder.bind(items[position])
 
         holder.itemView.setOnClickListener {
+            Timber.d("Record in position $position clicked")
             onClick(items[position].query)
         }
     }

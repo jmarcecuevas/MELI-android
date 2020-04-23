@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.marcelocuevas.mercadolibrechallenge.R
 import com.marcelocuevas.mercadolibrechallenge.databinding.ViewAttributeItemBinding
 import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIModel
+import timber.log.Timber
 
 class AttributesAdapter(
     val context: Context?,
@@ -49,6 +50,7 @@ class AttributesAdapter(
 
         private fun getColor(resID: Int): Int {
             context?.let { return ContextCompat.getColor(it, resID) }
+            Timber.w("Color $resID not found")
             return 0
         }
     }
