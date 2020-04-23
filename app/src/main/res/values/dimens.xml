@@ -6,4 +6,5 @@
     <dimen name="largeDimen">16dp</dimen>
     <dimen name="xLargeDimen">32dp</dimen>
     <dimen name="searchViewDimen">40dp</dimen>
+    <dimen name="toolbarElevation">5dp</dimen>
 </resources>

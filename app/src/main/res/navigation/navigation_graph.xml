@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph.xml"
     app:startDestination="@id/homeFragment">
     <fragment
@@ -10,7 +9,7 @@
         android:label="HomeFragment" >
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
-            app:destination="@id/search_fragment" >
+            app:destination="@id/search_fragment">
             <argument
                 android:name="queryText" />
         </action>
@@ -46,7 +45,7 @@
             app:destination="@id/reviewsFragment" />
         <action
             android:id="@+id/to_attributes_fragment"
-            app:destination="@id/attributesFragment" />
+            app:destination="@id/attributesFragment"/>
     </fragment>
     <fragment
         android:id="@+id/reviewsFragment"
