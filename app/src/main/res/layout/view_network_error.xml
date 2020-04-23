@@ -50,7 +50,7 @@
             android:text="@string/no_internet_error_subtitle">
         </TextView>
 
-        <Button
+        <TextView
             android:id="@+id/retryButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,12 +60,12 @@
             android:layout_marginTop="@dimen/xLargeDimen"
             android:textAllCaps="false"
             android:fontFamily="@font/lato_bold"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textColor="@color/colorAccent"
             android:textAlignment="center"
             android:focusable="true"
             android:text="@string/retry">
-        </Button>
+        </TextView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

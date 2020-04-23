@@ -32,5 +32,7 @@
     <string name="no_internet_error_title">¡Parece que no hay internet!</string>
     <string name="no_internet_error_subtitle">Revisa tu conexión para seguir navengando.</string>
     <string name="retry">Reintentar</string>
+    <string name="section_not_implemented_title">¡Ups! Sección no implementada</string>
+    <string name="section_not_implemented_subtitle">Prueba buscando algún producto</string>
 
 </resources>

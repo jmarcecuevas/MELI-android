@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/animationView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintWidth_default="percent"
+        app:layout_constraintWidth_percent=".7"
+        app:layout_constraintDimensionRatio="1:1"
+        app:lottie_fileName="stay_home_animation.json"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true">
+    </com.airbnb.lottie.LottieAnimationView>
+
+    <TextView
+        android:id="@+id/noInternetTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/animationView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/mediumDimen"
+        android:fontFamily="@font/lato"
+        android:textSize="18sp"
+        android:text="@string/section_not_implemented_title">
+    </TextView>
+
+    <TextView
+        android:id="@+id/noInternetSubtitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/noInternetTitleTextView"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="@dimen/mediumDimen"
+        android:fontFamily="@font/lato"
+        android:textSize="16sp"
+        android:textColor="@color/textLight"
+        android:text="@string/section_not_implemented_subtitle">
+    </TextView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import com.marcelocuevas.mercadolibrechallenge.R
-import kotlinx.android.synthetic.main.include_network_error.view.*
+import kotlinx.android.synthetic.main.view_network_error.view.*
 
 class ErrorView: FrameLayout {
 
@@ -18,7 +18,7 @@ class ErrorView: FrameLayout {
     constructor(context: Context, attrs: AttributeSet?, defStyleAttr: Int) : super(context, attrs, defStyleAttr)
 
     init {
-        LayoutInflater.from(context).inflate(R.layout.include_network_error, this)
+        LayoutInflater.from(context).inflate(R.layout.view_network_error, this)
         retryButton.setOnClickListener {
             onClick?.let { it() }
         }

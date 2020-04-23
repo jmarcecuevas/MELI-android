@@ -39,6 +39,7 @@ ext {
     koin_version = "2.1.5"
     room_version = "2.2.5"
     lifecycle_version = "2.0.0"
+    lottieVersion = "3.4.0"
 }
 
 
@@ -93,7 +94,8 @@ dependencies {
     // or Koin for Android Fragment Factory (unstable version)
     implementation "org.koin:koin-androidx-fragment:$koin_version"
 
-    implementation 'com.airbnb.android:lottie:2.7.0'
+    //implementation 'com.airbnb.android:lottie:2.7.0'
+    implementation "com.airbnb.android:lottie:$lottieVersion"
     implementation 'com.opensooq.android:pluto:1.6'
 
     testImplementation 'junit:junit:4.12'
