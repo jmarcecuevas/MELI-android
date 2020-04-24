@@ -21,7 +21,7 @@ class SearchResultsViewModel(
     private val _items = MutableLiveData<List<ItemUIModel>>()
     private val _loading = MutableLiveData<Boolean>()
 
-    private var queryToSearch: String = ""
+    var queryToSearch: String = ""
 
     val items: LiveData<List<ItemUIModel>>
         get() = _items
@@ -41,14 +41,13 @@ class SearchResultsViewModel(
         search()
     }
 
-    private fun search() {
+    fun search() {
         _error.value = false
         _loading.value = true
         viewModelScope.launch {
             when (val value = searchItems(queryToSearch)) {
                 is Result.Success -> {
                     _loading.postValue(false)
-                    _error.postValue(false)
                     _items.postValue(value.data.map { mapItemDomain(it,dictionary) })
                 }
 
