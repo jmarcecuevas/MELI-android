@@ -30,7 +30,7 @@ class ItemViewModel(
     val loading: LiveData<Boolean>
         get() = _loading
 
-    private var id: String = ""
+     var id: String = ""
 
     fun onStart(id: String) {
         this.id = id
@@ -41,7 +41,7 @@ class ItemViewModel(
         itemDetail()
     }
 
-    private fun itemDetail() {
+    fun itemDetail() {
         _loading.value = true
         _error.postValue(false)
         viewModelScope.launch {
