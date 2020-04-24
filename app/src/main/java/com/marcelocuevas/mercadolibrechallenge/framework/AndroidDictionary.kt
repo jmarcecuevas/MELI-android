@@ -10,7 +10,7 @@ class AndroidDictionary(private val context: Context): Dictionary {
         val resID = getResourceID(id)
         return if (resID > 0) context.getString(resID)
         else {
-            Timber.w("String not found: ${id}")
+            Timber.w("String not found: $id")
             return ""
         }
     }

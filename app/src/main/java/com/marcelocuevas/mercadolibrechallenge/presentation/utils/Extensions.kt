@@ -1,7 +1,6 @@
 package com.marcelocuevas.mercadolibrechallenge.presentation.utils
 
 import android.app.Activity
-import android.app.ProgressDialog.show
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -26,9 +25,6 @@ fun View.visibleOrGone(visible: Boolean) {
 }
 
 fun ImageView.loadImage(url: String) = Glide.with(this).load(url).into(this)
-
-fun ViewGroup.inflate(@LayoutRes layoutRes: Int): View =
-    LayoutInflater.from(context).inflate(layoutRes, this, false)
 
 fun ContentLoadingProgressBar.shouldShow(value: Boolean) {
     if (value) show() else hide()

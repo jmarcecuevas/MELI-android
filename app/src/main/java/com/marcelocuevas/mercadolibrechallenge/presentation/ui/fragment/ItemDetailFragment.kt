@@ -11,9 +11,7 @@ import com.marcelocuevas.mercadolibrechallenge.presentation.ui.adapter.PictureSl
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.shouldShow
 import com.marcelocuevas.mercadolibrechallenge.presentation.utils.visibleOrGone
 import com.marcelocuevas.mercadolibrechallenge.presentation.viewmodel.ItemViewModel
-import com.opensooq.pluto.base.PlutoAdapter
 import com.opensooq.pluto.listeners.OnItemClickListener
-import com.opensooq.pluto.listeners.OnSlideChangeListener
 import kotlinx.android.synthetic.main.fragment_item_detail.*
 import kotlinx.android.synthetic.main.fragment_item_detail.errorView
 import kotlinx.android.synthetic.main.fragment_item_detail.progressBar

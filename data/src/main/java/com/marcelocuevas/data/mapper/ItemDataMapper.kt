@@ -15,7 +15,7 @@ fun mapItemDto(input: ItemResponse): ItemModel {
         mapSellerDto(input.seller),
         mapShippingDto(input.shipping),
         mapNullInputList(input.tags) { tagsDto ->
-            tagsDto.orEmpty()
+            tagsDto
         }
     )
 }

@@ -31,10 +31,6 @@ abstract class BaseFragment: Fragment() {
         toolbar.setupWithNavController(navController, appBarConfiguration)
     }
 
-    protected fun navigateTo(resId: Int) {
-        findNavController().navigate(resId)
-    }
-
     protected fun navigateTo(directions: NavDirections) {
         findNavController().navigate(directions)
     }

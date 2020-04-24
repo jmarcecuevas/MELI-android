@@ -34,12 +34,6 @@ data class ItemDetailModel(
         )
     }
 
-    fun hasReviews(): Boolean = review.reviews.isNotEmpty()
-
-    fun hasRating(): Boolean = review.ratingAverage != 0f
-
-    fun hasAttributes(): Boolean = item.attributes.isNotEmpty()
-
     fun hasStorePickUp(): Boolean = item.shipping.storePickUp
 
     fun hasFreeShipping(): Boolean = item.shipping.freeShipping

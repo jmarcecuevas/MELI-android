@@ -57,7 +57,7 @@ data class ItemDetailUIModel(
 
         fun hasReviews(): Boolean = reviews.isNotEmpty()
 
-        fun ratingAverageLabel() = "${ratingAverage}"
+        fun ratingAverageLabel() = "$ratingAverage"
     }
 
     @Parcelize
@@ -88,7 +88,7 @@ data class ItemDetailUIModel(
         return EMPTY_STRING
     }
 
-    fun condition(): String {
+    private fun condition(): String {
         return when(condition) {
             NEW -> dictionary.getString(NEW_LABEL)
             USED -> dictionary.getString(USED_LABEL)

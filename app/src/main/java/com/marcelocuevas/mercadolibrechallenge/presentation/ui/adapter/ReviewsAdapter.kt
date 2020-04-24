@@ -11,7 +11,7 @@ import com.marcelocuevas.mercadolibrechallenge.presentation.model.ItemDetailUIMo
 
 class ReviewsAdapter(
     val context: Context?,
-    val items: List<ItemDetailUIModel.Review.Item>
+    private val items: List<ItemDetailUIModel.Review.Item>
 ) : RecyclerView.Adapter<ReviewsAdapter.ViewHolder>() {
 
 

@@ -18,8 +18,6 @@ data class ItemModel(
         val storePickUp: Boolean
     )
 
-    fun hasStorePickUp(): Boolean = shipping.storePickUp
-
     fun hasFreeShipping(): Boolean = shipping.freeShipping
 
     fun sellerNickname(): String = seller.nickname
