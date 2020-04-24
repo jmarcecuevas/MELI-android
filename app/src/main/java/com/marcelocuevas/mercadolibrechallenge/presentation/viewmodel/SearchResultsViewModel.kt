@@ -12,7 +12,7 @@ import com.marcelocuevas.domain.model.ItemModel
 import com.marcelocuevas.domain.model.dictionary.Dictionary
 
 class SearchResultsViewModel(
-    private val searchProducts: SearchItems,
+    private val searchItems: SearchItems,
     private val dictionary: Dictionary,
     private val mapItemDomain: (ItemModel, Dictionary) -> (ItemUIModel)
 ): ViewModel() {
@@ -45,7 +45,7 @@ class SearchResultsViewModel(
         _error.value = false
         _loading.value = true
         viewModelScope.launch {
-            when (val value = searchProducts(queryToSearch)) {
+            when (val value = searchItems(queryToSearch)) {
                 is Result.Success -> {
                     _loading.postValue(false)
                     _error.postValue(false)

@@ -23,7 +23,7 @@ class SearchViewModel(
         getAllSearches()
     }
 
-    private fun getAllSearches() =
+    fun getAllSearches() =
         viewModelScope.launch { _searches.postValue(getSearches().reversed()) }
 
 
