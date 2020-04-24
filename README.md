@@ -8,7 +8,7 @@ Es una app desarrollada en Kotlin aplicando Clean Architecure y haciendo uso de 
   <img src="screenshots/results.png" width="175"/>
   <img src="screenshots/details1.png" width="175"/>
   <img src="screenshots/detaila2.png" width="175"/>
-  <img src="screenshots/detaila2.png" width="175"/>
+  <img src="screenshots/details3.png" width="175"/>
   <img src="screenshots/reviews.png" width="175"/>
   <img src="screenshots/attributes.png" width="175"/>
   <img src="screenshots/nointernet.png" width="175"/>
