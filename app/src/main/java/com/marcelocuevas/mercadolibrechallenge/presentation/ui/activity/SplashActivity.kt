@@ -23,8 +23,8 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun requestFullSize() {
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        this.window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
     }
 
     private fun goToHome() {

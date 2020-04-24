@@ -13,7 +13,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SearchResultsFragment: BaseFragment() {
 
     private val viewModel by viewModel<SearchResultsViewModel>()
-    private val adapter = ItemsAdapter() {
+    private val adapter = ItemsAdapter {
         navigateToDetail(it)
     }
 
