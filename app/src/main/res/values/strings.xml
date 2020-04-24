@@ -34,5 +34,6 @@
     <string name="retry">Reintentar</string>
     <string name="section_not_implemented_title">¡Ups! Sección no implementada</string>
     <string name="section_not_implemented_subtitle">Prueba buscando algún producto</string>
+    <string name="feature_not_implemented">Lo sentimos, esta función aún no está disponible</string>
 
 </resources>

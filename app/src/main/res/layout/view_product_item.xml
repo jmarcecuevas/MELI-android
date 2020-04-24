@@ -37,6 +37,8 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/largeDimen"
+            android:layout_marginEnd="@dimen/largeDimen"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toEndOf="@+id/photoImageView"
             app:layout_constraintEnd_toEndOf="parent"

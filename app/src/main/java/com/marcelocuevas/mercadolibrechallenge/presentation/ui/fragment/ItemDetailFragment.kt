@@ -1,5 +1,6 @@
 package com.marcelocuevas.mercadolibrechallenge.presentation.ui.fragment
 
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.marcelocuevas.mercadolibrechallenge.R
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_item_detail.errorView
 import kotlinx.android.synthetic.main.fragment_item_detail.progressBar
 import kotlinx.android.synthetic.main.fragment_item_detail.toolbar
 import kotlinx.android.synthetic.main.include_attributes_product_detail.*
+import kotlinx.android.synthetic.main.include_price_and_shipping_product_detail.*
 import kotlinx.android.synthetic.main.include_reviews_product_detail.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -47,6 +49,14 @@ class ItemDetailFragment: DataBindingFragment<FragmentItemDetailBinding>() {
 
         showAllReviewsButton.setOnClickListener {
             navigateToReviewsFragment()
+        }
+
+        buyButton.setOnClickListener {
+            showFeatureNotImplemented()
+        }
+
+        addToCartButton.setOnClickListener {
+            showFeatureNotImplemented()
         }
 
         startObserving()
@@ -106,5 +116,11 @@ class ItemDetailFragment: DataBindingFragment<FragmentItemDetailBinding>() {
                 toReviewsFragment(it)
             navigateTo(directions)
         }
+    }
+
+    private fun showFeatureNotImplemented() {
+        Toast.makeText(context,
+            getString(R.string.feature_not_implemented),
+            Toast.LENGTH_SHORT).show()
     }
 }
