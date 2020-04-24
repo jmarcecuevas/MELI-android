@@ -19,13 +19,15 @@ class SaveSearchTest {
     }
 
     @Test
-    fun whenUseCaseIsInvokedShoudlCallRepository() {
-        val query = "query"
-
+    fun `when usecase is invoked should call repository`() {
         runBlocking {
-            saveSearch.invoke(query)
+            saveSearch.invoke(QUERY)
 
-            verify(repository).saveSearch(query)
+            verify(repository).saveSearch(QUERY)
         }
+    }
+
+    private companion object {
+        const val QUERY = "motorola"
     }
 }

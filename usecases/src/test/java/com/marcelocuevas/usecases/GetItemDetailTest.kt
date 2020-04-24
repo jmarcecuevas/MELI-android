@@ -30,7 +30,7 @@ class GetItemDetailTest {
     }
 
     @Test
-    fun whenUseCaseIsInvokedShoudCallRepositoryMethods() {
+    fun `when usecase is invoked should call repository methods`() {
         runBlocking {
             getItemDetail.invoke(ITEM_ID)
 
@@ -41,7 +41,7 @@ class GetItemDetailTest {
     }
 
     @Test
-    fun whenAllRepositoryCallsAreSuccessShouldReturnSuccess() {
+    fun `when all repository calls are success should return success`() {
         runBlocking {
             allCallsToRepositoryAreSuccess()
 
@@ -58,7 +58,7 @@ class GetItemDetailTest {
     }
 
     @Test
-    fun whenAtLeastOneRepositoryCallHasErrorShouldReturnError() {
+    fun `when at least one repository call has error should return error`() {
         runBlocking {
             val error: Result.Error = mock()
             whenever(repository.itemDetail(ITEM_ID)).thenReturn(error)

@@ -24,7 +24,7 @@ fun mapItemDetailDto(input: ItemDetailResponse): ItemDetailModel.ItemModel {
             mapAttributeDto(attributeDto)
         },
         mapNullInputList(input.tags) { tagDto ->
-            tagDto.orEmpty()
+            tagDto
         }
     )
 }

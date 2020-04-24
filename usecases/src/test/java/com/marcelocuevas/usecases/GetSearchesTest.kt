@@ -18,7 +18,7 @@ class GetSearchesTest {
     }
 
     @Test
-     fun whenUseCaseIsInvokedShoudlCallRepository() {
+    fun `when usecase is invoked should call repository`() {
         runBlocking {
             getSearches.invoke()
 
